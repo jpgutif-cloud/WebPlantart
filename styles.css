@@ -1481,3 +1481,76 @@ h3, .h3 {
 
 /* ── BODY SCROLL LOCK ── */
 body.drawer-open { overflow: hidden; }
+
+/* ── WHATSAPP FLOATING BUTTON ── */
+.wa-float {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  width: 60px;
+  height: 60px;
+  background-color: #25d366;
+  color: #fff;
+  border-radius: 50px;
+  text-align: center;
+  font-size: 30px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+  z-index: 999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  text-decoration: none;
+}
+
+.wa-float:hover {
+  background-color: #128c7e;
+  transform: scale(1.1);
+  box-shadow: 0 6px 16px rgba(0,0,0,0.4);
+}
+
+.wa-float svg {
+  width: 32px;
+  height: 32px;
+  fill: currentColor;
+}
+
+/* Tooltip/Label on hover (Desktop) */
+@media (min-width: 1024px) {
+  .wa-float::before {
+    content: "Solicitar propuesta";
+    position: absolute;
+    right: 70px;
+    background: var(--pa-surface);
+    color: var(--pa-text);
+    padding: 8px 16px;
+    border-radius: 12px;
+    font-family: var(--font-body);
+    font-size: 13px;
+    font-weight: 500;
+    white-space: nowrap;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    border: 1px solid var(--pa-line);
+  }
+  .wa-float:hover::before {
+    opacity: 1;
+    visibility: visible;
+    right: 80px;
+  }
+}
+
+@media (max-width: 767px) {
+  .wa-float {
+    bottom: 20px;
+    right: 20px;
+    width: 50px;
+    height: 50px;
+  }
+  .wa-float svg {
+    width: 24px;
+    height: 24px;
+  }
+}

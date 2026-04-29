@@ -1,0 +1,1483 @@
+/* ============================================================
+   PLANT ART — Design System
+   Version: 3.0 Production (Brand Book Compliant)
+   Source of truth: plantart-brand-book-v2.md
+   ============================================================ */
+
+/* ── DESIGN TOKENS ── */
+:root {
+  /* Palette — Black Canopy System (Brand Book §2.2) */
+  --pa-bg:         #0A0D0A;
+  --pa-bg-deep:    #121712;
+  --pa-surface:    #1B221B;
+  --pa-text:       #F3F0E8;
+  --pa-text-muted: #C9C2B5;
+  --pa-moss:       #6B8E6F; /* Mineral Sage — High Contrast Accent */
+  --pa-green-deep: #2D4735;
+  --pa-gold:       #B5965B;
+  --pa-slate:      #8B8E86;
+  --pa-line:       rgba(243,240,232,0.12);
+  --pa-line-moss:  rgba(64,92,71,0.25);
+  --pa-overlay:    rgba(10,13,10,0.38);
+
+  /* Typography (Brand Book §2.4) */
+  --font-display: 'Cormorant Garamond', Georgia, serif;
+  --font-ui:      'Geist', system-ui, sans-serif;
+  --font-body:    'Geist', system-ui, sans-serif;
+  --font-mono:    'Geist Mono', monospace;
+
+  /* Spacing Scale (Brand Book §3) */
+  --space-1: 4px;   --space-2: 8px;   --space-3: 12px;
+  --space-4: 16px;  --space-5: 24px;  --space-6: 32px;
+  --space-7: 40px;  --space-8: 56px;  --space-9: 72px;
+  --space-10: 96px; --space-11: 120px; --space-12: 160px;
+
+  /* Radius (Brand Book §3) */
+  --radius-sm: 8px;   --radius-md: 12px;
+  --radius-lg: 20px;  --radius-xl: 28px;  --radius-pill: 999px;
+
+  /* Shadows — ambient only */
+  --shadow-ambient: 0 2px 24px rgba(0,0,0,0.18);
+  --shadow-card:    0 4px 32px rgba(0,0,0,0.22);
+
+  /* Transitions */
+  --transition-fast: 160ms cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-mid:  240ms cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-slow: 400ms cubic-bezier(0.16, 1, 0.3, 1);
+
+  /* Layout */
+  --container-max:   1440px;
+  --padding-mobile:  20px;
+  --padding-tablet:  32px;
+  --padding-desktop: 48px;
+  --padding-wide:    72px;
+
+  /* Z-index */
+  --z-float: 10;  --z-dropdown: 20;
+  --z-header: 30; --z-modal: 40;  --z-toast: 50;
+}
+
+/* ── RESET ── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+body {
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--pa-text);
+  background-color: var(--pa-bg);
+  overflow-x: hidden;
+}
+
+img { display: block; max-width: 100%; height: auto; }
+a { color: inherit; text-decoration: none; }
+button { font: inherit; cursor: pointer; border: none; background: none; }
+ul, ol { list-style: none; }
+input, textarea, select { font: inherit; }
+
+::selection {
+  background: var(--pa-moss);
+  color: var(--pa-text);
+}
+
+:focus-visible {
+  outline: 2px solid var(--pa-gold);
+  outline-offset: 2px;
+}
+
+/* ── CONTAINER (Brand Book §3) ── */
+.pa-container {
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: 0 var(--padding-mobile);
+}
+
+@media (min-width: 768px)  { .pa-container { padding: 0 var(--padding-tablet); } }
+@media (min-width: 1024px) { .pa-container { padding: 0 var(--padding-desktop); } }
+@media (min-width: 1440px) { .pa-container { padding: 0 var(--padding-wide); } }
+
+/* ── TYPOGRAPHY (Brand Book §2.5 — exact values) ── */
+
+/* H1: Cormorant Garamond 500, clamp(42px,7vw,96px), -0.02em, 0.95 */
+h1, .h1 {
+  font-family: var(--font-display);
+  font-weight: 500;
+  letter-spacing: -0.04em;
+  line-height: 0.9;
+  color: var(--pa-text);
+}
+
+/* H2: Manrope 600, clamp(24px,3.5vw,40px), -0.02em, 1.1 */
+h2, .h2 {
+  font-family: var(--font-ui);
+  font-weight: 600;
+  font-size: clamp(24px, 3.5vw, 40px);
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+  color: var(--pa-text);
+}
+
+/* H3: Manrope 600, clamp(18px,2vw,28px), -0.01em, 1.2 */
+h3, .h3 {
+  font-family: var(--font-ui);
+  font-weight: 600;
+  font-size: clamp(18px, 2vw, 24px);
+  letter-spacing: -0.01em;
+  line-height: 1.2;
+  color: var(--pa-text);
+}
+
+/* Body L: Geist 400, 18px desktop / 17px mobile, 1.65 */
+.body-l {
+  font-family: var(--font-body);
+  font-size: 17px;
+  line-height: 1.65;
+  color: var(--pa-text-muted);
+  letter-spacing: -0.01em;
+}
+
+/* Body M: Geist 400, 16px desktop / 15px mobile, 1.6 */
+.body-m {
+  font-family: var(--font-body);
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--pa-text-muted);
+  max-width: 65ch;
+  letter-spacing: -0.01em;
+}
+
+@media (min-width: 768px) {
+  .body-l { font-size: 18px; }
+  .body-m { font-size: 16px; }
+}
+
+/* ── ATOMS: EYEBROW (Brand Book: Inter 500, 12px, uppercase, 0.14em, --pa-moss) ── */
+.pa-eyebrow {
+  font-family: var(--font-body);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--pa-moss);
+  display: block;
+  margin-bottom: var(--space-4);
+}
+
+/* ── ATOMS: BUTTONS (Brand Book §14 — Inter 600, 14px, uppercase, 0.08em) ── */
+.pa-btn-primary {
+  height: 48px;
+  padding: 0 var(--space-5);
+  border-radius: var(--radius-pill);
+  background: var(--pa-text);
+  color: var(--pa-bg);
+  border: 1px solid transparent;
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all var(--transition-mid);
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  white-space: nowrap;
+}
+
+.pa-btn-primary:hover {
+  background: #E6E1D6;
+  transform: translateY(-1px);
+}
+
+.pa-btn-primary:focus-visible {
+  outline: 2px solid var(--pa-gold);
+  outline-offset: 2px;
+}
+
+.pa-btn-primary.compact { height: 40px; padding: 0 18px; font-size: 13px; }
+
+.pa-btn-secondary {
+  height: 48px;
+  padding: 0 var(--space-5);
+  border-radius: var(--radius-pill);
+  background: transparent;
+  color: var(--pa-text);
+  border: 1px solid rgba(243,240,232,0.18);
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all var(--transition-mid);
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  white-space: nowrap;
+}
+
+.pa-btn-secondary:hover {
+  border-color: var(--pa-text);
+  background: rgba(243,240,232,0.04);
+}
+
+.pa-btn-text {
+  background: none;
+  border: none;
+  padding: 0;
+  color: var(--pa-text-muted);
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: color var(--transition-fast);
+}
+
+.pa-btn-text::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: var(--pa-text);
+  transition: width var(--transition-mid);
+}
+
+.pa-btn-text:hover { color: var(--pa-text); }
+.pa-btn-text:hover::after { width: 100%; }
+
+/* ── ATOMS: INPUTS (Brand Book §15 — height 56px, radius 16px, bg-deep, gold focus) ── */
+.pa-label {
+  font-family: var(--font-body);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--pa-slate);
+  display: block;
+  margin-bottom: var(--space-2);
+}
+
+.pa-input {
+  height: 56px;
+  padding: 0 18px;
+  width: 100%;
+  background: var(--pa-bg-deep);
+  border: 1px solid var(--pa-line);
+  border-radius: var(--radius-lg);
+  color: var(--pa-text);
+  font-family: var(--font-body);
+  font-size: 15px;
+  transition: border-color var(--transition-mid), box-shadow var(--transition-mid);
+}
+
+.pa-input::placeholder { color: rgba(243,240,232,0.45); }
+.pa-input:hover { border-color: rgba(243,240,232,0.24); }
+.pa-input:focus {
+  outline: none;
+  border-color: var(--pa-gold);
+  box-shadow: 0 0 0 3px rgba(181,150,91,0.08);
+}
+
+.pa-textarea {
+  min-height: 144px;
+  padding: var(--space-4) 18px;
+  width: 100%;
+  background: var(--pa-bg-deep);
+  border: 1px solid var(--pa-line);
+  border-radius: var(--radius-lg);
+  color: var(--pa-text);
+  font-family: var(--font-body);
+  font-size: 15px;
+  resize: vertical;
+  transition: border-color var(--transition-mid), box-shadow var(--transition-mid);
+}
+
+.pa-textarea::placeholder { color: rgba(243,240,232,0.45); }
+.pa-textarea:hover { border-color: rgba(243,240,232,0.24); }
+.pa-textarea:focus {
+  outline: none;
+  border-color: var(--pa-gold);
+  box-shadow: 0 0 0 3px rgba(181,150,91,0.08);
+}
+
+/* ── ATOMS: DIVIDER ── */
+.pa-divider {
+  border: none;
+  border-top: 1px solid var(--pa-line);
+  margin: 0;
+}
+
+/* ── UTILS: LIQUID GLASS ── */
+.glass-refraction {
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.1), 0 8px 32px rgba(0, 0, 0, 0.4);
+}
+
+.pa-editorial-spacing {
+  padding-left: 10vw;
+}
+@media (min-width: 1200px) {
+  .pa-editorial-spacing { padding-left: 15vw; }
+}
+
+/* ── ATOMS: ICONS (inline SVG — Lucide stroke 1.5) ── */
+.pa-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.pa-icon svg {
+  width: 20px;
+  height: 20px;
+  stroke: currentColor;
+  stroke-width: 1.5;
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.pa-icon--sm svg { width: 16px; height: 16px; }
+.pa-icon--lg svg { width: 24px; height: 24px; }
+
+/* ── SECTION SPACING (Brand Book: compact 72/96, standard 96/120, editorial 120/160) ── */
+.pt-compact  { padding-top: var(--space-9); }
+.pb-compact  { padding-bottom: var(--space-9); }
+.pt-standard { padding-top: var(--space-10); }
+.pb-standard { padding-bottom: var(--space-10); }
+.pt-editorial { padding-top: var(--space-11); }
+.pb-editorial { padding-bottom: var(--space-11); }
+
+@media (min-width: 768px) {
+  .pt-compact  { padding-top: var(--space-10); }
+  .pb-compact  { padding-bottom: var(--space-10); }
+  .pt-standard { padding-top: var(--space-11); }
+  .pb-standard { padding-bottom: var(--space-11); }
+  .pt-editorial { padding-top: var(--space-12); }
+  .pb-editorial { padding-bottom: var(--space-12); }
+}
+
+/* ── SECTION HEADER ── */
+.section-header { margin-bottom: var(--space-8); }
+.section-header h2 { margin-top: var(--space-1); }
+.section-header .body-m { margin-top: var(--space-4); max-width: 560px; }
+
+/* ── ORGANISM: HEADER (Brand Book §4 — fixed, z:30, transparent→0.92+blur12, 320ms) ── */
+.pa-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 60px;
+  z-index: var(--z-header);
+  transition: background 320ms ease, box-shadow 320ms ease;
+  display: flex;
+  align-items: center;
+}
+
+.pa-header--solid {
+  background: rgba(10,13,10,0.92);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: 0 1px 0 var(--pa-line);
+}
+
+@media (min-width: 768px) { .pa-header { height: 72px; } }
+
+.pa-header .pa-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+/* Logo: Cormorant Garamond 500 */
+.logo {
+  font-family: var(--font-display);
+  font-size: 18px;
+  font-weight: 500;
+  color: var(--pa-text);
+  letter-spacing: -0.01em;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+@media (min-width: 768px) { .logo { font-size: 22px; } }
+
+/* Nav: Inter 500, 13px */
+.pa-header-nav {
+  display: none;
+  align-items: center;
+  gap: var(--space-6);
+}
+
+@media (min-width: 1024px) {
+  .pa-header-nav { display: flex; }
+}
+
+.nav-link {
+  font-family: var(--font-body);
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  color: var(--pa-text-muted);
+  transition: color var(--transition-fast);
+  text-decoration: none;
+}
+
+.nav-link:hover { color: var(--pa-text); }
+
+.mobile-menu-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--pa-text);
+  width: 40px;
+  height: 40px;
+}
+
+@media (min-width: 1024px) { .mobile-menu-btn { display: none; } }
+
+/* ── ORGANISM: MOBILE DRAWER (Brand Book §12 — lateral, bg solid, no blur) ── */
+.mobile-drawer-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(10,13,10,0.6);
+  z-index: calc(var(--z-modal) - 1);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity var(--transition-mid), visibility var(--transition-mid);
+}
+
+.mobile-drawer-overlay.is-active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.mobile-drawer {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 280px;
+  height: 100%;
+  background: var(--pa-bg);
+  z-index: var(--z-modal);
+  padding: var(--space-5);
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  transform: translateX(100%);
+  transition: transform 280ms ease;
+  border-left: 1px solid var(--pa-line);
+}
+
+.mobile-drawer.is-open { transform: translateX(0); }
+
+.close-drawer-btn {
+  align-self: flex-end;
+  color: var(--pa-text);
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: var(--space-6);
+}
+
+.mobile-drawer .nav-link {
+  display: block;
+  font-size: 18px;
+  padding: var(--space-4) 0;
+  border-bottom: 1px solid var(--pa-line);
+  letter-spacing: 0;
+}
+
+/* ── ORGANISM: HERO (Brand Book §5) ── */
+.hero-section {
+  position: relative;
+  min-height: 100dvh;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+}
+
+.hero-background {
+  position: absolute;
+  inset: 0;
+}
+
+.hero-background img,
+.hero-background video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Overlay: Brand Book exact gradient */
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(10,13,10,0.15) 0%,
+    rgba(10,13,10,0.42) 50%,
+    rgba(10,13,10,0.72) 100%
+  );
+}
+
+.hero-content-wrapper {
+  position: relative;
+  z-index: 2;
+  padding-top: 140px;
+  padding-bottom: 80px; 
+  min-height: 100dvh;
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.hero-content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-6);
+  max-width: 860px;
+  padding-left: 4vw;
+}
+
+/* H1 Hero: Brand Book exact — clamp(42px, 7vw, 96px) */
+.hero-title {
+  font-size: clamp(42px, 7vw, 96px);
+}
+
+.hero-content .body-l { max-width: 520px; }
+
+.ctas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-4);
+  margin-top: var(--space-2);
+}
+
+/* Hero Credibility Data Top */
+.hero-credibility-top {
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--pa-gold);
+  margin-bottom: var(--space-2);
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.hero-credibility-top::after {
+  content: '';
+  flex: 0 0 40px;
+  height: 1px;
+  background: var(--pa-gold);
+  opacity: 0.4;
+}
+
+.hero-trust-tag {
+  display: inline-flex;
+  align-items: center;
+  width: fit-content;
+  gap: var(--space-3);
+  padding: 6px 14px;
+  background: rgba(181, 150, 91, 0.05);
+  border: 1px solid rgba(181, 150, 91, 0.15);
+  border-radius: var(--radius-pill);
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 600;
+  color: var(--pa-gold);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: var(--space-1);
+  backdrop-filter: blur(8px);
+}
+
+.hero-trust-tag .sep {
+  width: 1px;
+  height: 10px;
+  background: var(--pa-gold);
+  opacity: 0.3;
+}
+
+.hero-trust-tag svg {
+  width: 12px;
+  height: 12px;
+  stroke: var(--pa-gold);
+}
+
+/* DELETE: hero-data-bridge styles moved to inline or consolidated */
+
+/* ── MOLECULE: HERO DATA BRIDGE (Premium Trajectory Restoration) ── */
+.hero-data-bridge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-8);
+  margin-top: var(--space-8);
+  padding: var(--space-4) var(--space-6);
+  background: rgba(27, 34, 27, 0.4);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(243, 240, 232, 0.08);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-ambient), inset 0 1px 1px rgba(255,255,255,0.05);
+}
+
+.data-bridge-item {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.data-bridge-value {
+  font-family: var(--font-mono);
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--pa-text);
+  line-height: 1;
+}
+
+.data-bridge-label {
+  font-family: var(--font-body);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--pa-gold);
+}
+
+.data-bridge-sep {
+  width: 1px;
+  height: 24px;
+  background: var(--pa-line);
+}
+
+@media (max-width: 767px) {
+  .hero-data-bridge {
+    gap: var(--space-5);
+    padding: var(--space-3) var(--space-5);
+  }
+  .data-bridge-value { font-size: 20px; }
+}
+
+/* Scroll cue text and line */
+.scroll-cue {
+  position: absolute;
+  bottom: var(--space-6);
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2;
+  color: var(--pa-text-muted);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  animation: gentleFloatText 2.4s ease-in-out infinite;
+}
+.scroll-text-cue {
+  font-family: var(--font-body);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  margin-bottom: var(--space-3);
+}
+.scroll-line-cue {
+  width: 1px;
+  height: 48px;
+  background: var(--pa-text-muted);
+  margin: 0 auto;
+}
+
+@keyframes gentleFloatText {
+  0%, 100% { transform: translateX(-50%) translateY(0); opacity: 0.7; }
+  50%      { transform: translateX(-50%) translateY(4px); opacity: 1; }
+}
+
+/* ── MOLECULE: PROJECT CARD (Brand Book §6 — 60/40 grid) ── */
+.projects-grid {
+  display: grid;
+  gap: var(--space-5);
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 768px) {
+  .projects-grid {
+    grid-template-columns: 3fr 2fr;
+    gap: var(--space-5);
+  }
+}
+
+.projects-col-stacked {
+  display: grid;
+  gap: var(--space-5);
+}
+
+.pa-project-card {
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--radius-lg);
+  display: block;
+  aspect-ratio: 4/3;
+}
+
+.pa-project-card.large { aspect-ratio: 3/2; }
+
+@media (min-width: 768px) {
+  .pa-project-card.large { aspect-ratio: auto; height: 100%; }
+}
+
+.pa-project-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 500ms ease;
+}
+
+.pa-project-card:hover img { transform: scale(1.03); }
+
+.project-card-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(10,13,10,0.82) 0%, transparent 50%);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: var(--space-5);
+  opacity: 0;
+  transition: opacity 320ms ease;
+}
+
+.pa-project-card:hover .project-card-overlay,
+.pa-project-card:focus-within .project-card-overlay { opacity: 1; }
+
+/* Always visible on mobile */
+@media (max-width: 767px) {
+  .project-card-overlay { opacity: 1; }
+}
+
+/* Caption: Inter 500, 11px, uppercase */
+.project-meta {
+  font-family: var(--font-body);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--pa-slate);
+  margin-bottom: 6px;
+}
+
+.project-name {
+  font-family: var(--font-ui);
+  font-weight: 600;
+  font-size: 18px;
+  color: var(--pa-text);
+  margin-bottom: var(--space-3);
+}
+
+/* ── MOLECULE: SERVICE CARD ASYMMETRIC (Brand Book §7) ── */
+.expertise-grid.asymmetric {
+  display: grid;
+  gap: var(--space-6);
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 1024px) {
+  .expertise-grid.asymmetric {
+    grid-template-columns: 5fr 6fr;
+    gap: var(--space-8);
+  }
+}
+
+.pa-service-card.protagonist {
+  padding: var(--space-7);
+  background: var(--pa-surface);
+  border: 1px solid rgba(243,240,232,0.06);
+  border-radius: 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: var(--space-4);
+}
+
+.pa-service-card.protagonist h3 {
+  font-size: clamp(32px, 5vw, 42px);
+  margin: var(--space-2) 0;
+  line-height: 1.1;
+  color: var(--pa-text);
+}
+
+.pa-service-card.protagonist .body-l { 
+  color: var(--pa-text-muted); 
+}
+
+.expertise-cta {
+  margin-top: var(--space-5);
+  align-self: flex-start;
+}
+
+.expertise-compact-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.pa-service-card.compact {
+  padding: var(--space-5) 0;
+  background: transparent;
+  border-bottom: 1px solid var(--pa-line);
+  display: flex;
+  flex-direction: column;
+}
+
+.pa-service-card.compact:last-child {
+  border-bottom: none;
+}
+
+.pa-service-card.compact h3 {
+  font-size: 20px;
+  margin-top: var(--space-2);
+  color: var(--pa-text-muted);
+  font-weight: 500;
+}
+
+/* Card text variation (Brand Book §14): eyebrow(slate) */
+.pa-service-card .pa-eyebrow { color: var(--pa-gold); }
+
+/* Projects CTA */
+.projects-cta { text-align: center; margin-top: var(--space-8); }
+
+/* Trust block body spacing */
+.pa-trust h3 + .body-m { margin-top: var(--space-3); }
+
+/* About body and emphasis */
+.about-body { display: flex; flex-direction: column; gap: var(--space-5); }
+.about-emphasis { color: var(--pa-text); }
+.about-cta { margin-top: var(--space-7); align-self: flex-start; }
+
+/* ── MOLECULE: APPROACH STEPS (Sticky Desktop Layout) ── */
+.approach-split-layout {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-8);
+}
+
+@media (min-width: 1024px) {
+  .approach-split-layout {
+    grid-template-columns: 5fr 7fr;
+    gap: var(--space-10);
+    align-items: start;
+  }
+  .approach-sticky-visual {
+    position: sticky;
+    top: calc(var(--space-12) + 72px);
+    height: calc(100vh - 200px);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+  }
+}
+
+.approach-sticky-visual img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: grayscale(20%);
+}
+
+.approach-steps-typographic {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-9);
+  margin-top: var(--space-10);
+}
+
+.pa-step-typo {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  position: relative;
+  padding-left: var(--space-9); /* Room for big numeral cutoff */
+}
+
+/* The giant background-style numerals */
+.pa-step-big-numeral {
+  position: absolute;
+  left: -8px;
+  top: -24px;
+  font-family: var(--font-display);
+  font-size: clamp(64px, 10vw, 96px);
+  font-weight: 300;
+  font-style: italic;
+  color: var(--pa-gold);
+  opacity: 0.15;
+  line-height: 1;
+  pointer-events: none;
+}
+
+.pa-step-typo h3 {
+  font-size: 24px;
+  color: var(--pa-text);
+  margin: 0;
+  position: relative;
+  z-index: 1;
+}
+
+.pa-step-typo p {
+  font-size: 16px;
+  color: var(--pa-text-muted);
+  line-height: 1.6;
+  position: relative;
+  z-index: 1;
+}
+
+/* Elevated Quote */
+.approach-elevated-quote {
+  margin-top: var(--space-10);
+  background: var(--pa-surface);
+  border-left: 2px solid var(--pa-gold);
+  padding: var(--space-7);
+}
+
+.approach-elevated-quote blockquote {
+  font-family: var(--font-display);
+  font-size: clamp(28px, 4vw, 40px);
+  color: var(--pa-text);
+  margin: 0;
+  line-height: 1.2;
+}
+
+/* ── MOLECULE: CLIENT WALL (Brand Book §9 — bg-deep, hairlines top/bottom) ── */
+.clients-section {
+  border-top: 1px solid var(--pa-line);
+  border-bottom: 1px solid var(--pa-line);
+  background: var(--pa-bg-deep);
+}
+
+/* Client header aligned left like section headers */
+.clients-header { margin-bottom: var(--space-7); }
+.clients-header .pa-eyebrow { margin-bottom: 0; }
+
+/* Sector grouping — industry categories */
+.clients-sector {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  margin-bottom: var(--space-6);
+}
+
+.clients-sector:last-child { margin-bottom: 0; }
+
+.clients-sector-label {
+  font-family: var(--font-body);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--pa-gold);
+  display: block;
+  padding-bottom: var(--space-3);
+  border-bottom: 1px solid var(--pa-line-moss);
+}
+
+/* ── CLIENT LOGO GRID ── */
+.clients-logo-grid {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-10);
+  padding: var(--space-8) 0;
+}
+
+@media (max-width: 768px) {
+  .clients-logo-grid {
+    gap: var(--space-7);
+    justify-content: flex-start;
+  }
+}
+
+.client-logo {
+  height: 24px;
+  width: auto;
+  max-width: 140px;
+  object-fit: contain;
+  filter: brightness(0) invert(1) opacity(0.45);
+  transition: all var(--transition-mid);
+}
+
+.client-logo:hover {
+  filter: brightness(0) invert(1) opacity(1);
+  transform: scale(1.08);
+}
+
+/* ── MOLECULE: KPI (Brand Book §5.4) ── */
+.kpi-row {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-6);
+  padding: var(--space-10) 0;
+  border-bottom: 1px solid var(--pa-line);
+}
+
+@media (min-width: 768px) {
+  .kpi-row { grid-template-columns: repeat(4, 1fr); gap: var(--space-8); }
+}
+
+.pa-kpi {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.pa-kpi .number {
+  font-family: var(--font-mono);
+  font-size: clamp(32px, 4vw, 48px);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--pa-text);
+  line-height: 1;
+}
+
+.kpi-micro-context {
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--pa-gold);
+}
+
+.kpi-divider {
+  width: 24px;
+  height: 1px;
+  background: var(--pa-gold);
+  margin: var(--space-2) 0;
+  opacity: 0.3;
+}
+
+.pa-kpi .pa-label {
+  font-size: 13px;
+  line-height: 1.4;
+  color: var(--pa-text-muted);
+}
+
+/* ── MOLECULE: TRUST BLOCKS (Brand Book §10) ── */
+.trust-row {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-8);
+  padding: var(--space-10) 0;
+}
+
+@media (min-width: 768px) {
+  .trust-row { grid-template-columns: repeat(3, 1fr); gap: var(--space-10); }
+}
+
+.pa-trust {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  padding: var(--space-6);
+  background: var(--pa-surface);
+  border: 1px solid rgba(243,240,232,0.06);
+  border-radius: var(--radius-lg);
+  transition: transform var(--transition-mid), border var(--transition-mid);
+}
+
+.pa-trust:hover {
+  transform: translateY(-4px);
+  border-color: rgba(107, 142, 111, 0.2);
+}
+
+.pa-trust .accent {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--pa-moss);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.pa-trust h3 {
+  font-family: var(--font-display);
+  font-size: 24px;
+  font-weight: 500;
+  line-height: 1.2;
+}
+
+/* ── ORGANISM: ABOUT (Brand Book §11 — 55/45 grid) ── */
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-8);
+}
+
+@media (min-width: 1024px) {
+  .about-grid { grid-template-columns: 55fr 45fr; align-items: center; }
+}
+
+.about-text { display: flex; flex-direction: column; gap: 0; }
+.about-text h2 { margin-top: var(--space-1); margin-bottom: var(--space-6); }
+
+.about-image-wrapper {
+  order: -1;
+  position: relative;
+}
+@media (min-width: 1024px) { .about-image-wrapper { order: 0; } }
+
+.about-image {
+  width: 100%;
+  height: 400px;
+  object-fit: cover;
+  border-radius: var(--radius-lg);
+}
+
+@media (min-width: 1024px) { .about-image { height: 100%; min-height: 480px; } }
+
+/* Fallback state when about.png fails to load */
+.about-image-wrapper.about-image--fallback {
+  background: var(--pa-surface);
+  border-radius: var(--radius-lg);
+  min-height: 400px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.about-image-fallback-content {
+  display: none; /* shown via JS class toggle */
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-4);
+  color: var(--pa-slate);
+  font-size: 14px;
+  letter-spacing: 0.06em;
+}
+
+.about-image-wrapper.about-image--fallback .about-image-fallback-content {
+  display: flex;
+}
+
+/* ── ORGANISM: CONTACT (Brand Book §12 — 40/60 columns) ── */
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-8);
+}
+
+@media (min-width: 1024px) {
+  .contact-grid { grid-template-columns: 40fr 60fr; }
+}
+
+.contact-intro h2 { margin-top: var(--space-1); }
+
+.contact-info-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  margin-top: var(--space-7);
+}
+
+.contact-info-item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  font-size: 15px;
+  color: var(--pa-text-muted);
+}
+
+.contact-info-item svg {
+  width: 16px;
+  height: 16px;
+  stroke: var(--pa-moss);
+  stroke-width: 1.5;
+  fill: none;
+  flex-shrink: 0;
+}
+
+.form-grid {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+}
+
+.form-row-2 {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-5);
+}
+
+@media (min-width: 768px) {
+  .form-row-2 { grid-template-columns: 1fr 1fr; }
+}
+
+.form-group { display: flex; flex-direction: column; }
+
+.w-full { width: 100%; }
+
+.form-success-message {
+  display: none;
+  background: rgba(64,92,71,0.12);
+  border: 1px solid rgba(64,92,71,0.3);
+  border-radius: var(--radius-md);
+  padding: var(--space-5);
+  color: var(--pa-text);
+  font-size: 15px;
+  line-height: 1.6;
+  text-align: center;
+}
+
+.form-success-message.is-visible { display: block; }
+
+/* ── ORGANISM: AWARDS / RECOGNITION (Brand Book §11 — centered editorial, display italic) ── */
+.awards-wrapper {
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.awards-eyebrow {
+  color: var(--pa-gold);
+  margin-bottom: var(--space-6);
+}
+
+.awards-title {
+  font-family: var(--font-display);
+  font-size: clamp(22px, 3.5vw, 36px);
+  font-weight: 500;
+  font-style: italic;
+  line-height: 1.3;
+  margin-bottom: var(--space-5);
+  color: var(--pa-text);
+}
+
+.awards-body {
+  margin: 0 auto;
+  text-align: center;
+  max-width: 60ch;
+}
+
+/* ── ORGANISM: FOOTER (Brand Book §13 — 4 columns, bg, hairline top) ── */
+.pa-footer {
+  background: var(--pa-bg);
+  border-top: 1px solid var(--pa-line);
+  padding: var(--space-9) 0 var(--space-7);
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-7);
+}
+
+@media (min-width: 768px) {
+  .footer-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (min-width: 1024px) {
+  .footer-grid { grid-template-columns: 1.5fr 1fr 1fr 1fr; gap: var(--space-7); }
+}
+
+.footer-logo {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: 20px;
+  color: var(--pa-text);
+}
+
+/* ── MOLECULE: FOOTER SUPER TAGLINE ── */
+.footer-super-tagline {
+  margin-bottom: var(--space-9);
+  padding-bottom: var(--space-8);
+  border-bottom: 1px solid var(--pa-line);
+}
+.footer-super-tagline h2 {
+  font-family: var(--font-display);
+  font-size: clamp(32px, 5vw, 64px);
+  color: var(--pa-text);
+  line-height: 1.1;
+  max-width: 800px;
+}
+
+.footer-social {
+  display: flex;
+  gap: var(--space-4);
+  margin-top: var(--space-5);
+}
+
+.footer-social a {
+  color: var(--pa-slate);
+  transition: color var(--transition-fast);
+}
+
+.footer-social a:hover { color: var(--pa-text); }
+.footer-social svg { width: 24px; height: 24px; }
+
+.footer-col-title {
+  font-family: var(--font-body);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--pa-text);
+  margin-bottom: var(--space-4);
+}
+
+.footer-links {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.footer-links a {
+  font-size: 14px;
+  color: var(--pa-text-muted);
+  transition: color var(--transition-fast);
+}
+
+.footer-links a:hover { color: var(--pa-text); }
+
+.footer-bottom {
+  border-top: 1px solid var(--pa-line);
+  margin-top: var(--space-8);
+  padding-top: var(--space-5);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  font-size: 12px;
+  color: var(--pa-slate);
+}
+
+@media (min-width: 768px) {
+  .footer-bottom { flex-direction: row; justify-content: space-between; }
+}
+
+
+/* Legacy animations removed to avoid conflict with GSAP */
+
+/* ── FOOTER UTILITIES ── */
+.footer-address {
+  color: var(--pa-text-muted);
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.footer-proposal-link {
+  margin-top: var(--space-2);
+}
+
+/* ── BACKGROUND ALTERNATION ── */
+.bg-deep { background: var(--pa-bg-deep); }
+.bg-base { background: var(--pa-bg); }
+
+/* ── FALLBACK & CHIP (Brand Book §6) ── */
+.pa-project-card.image-fallback {
+  background: var(--pa-surface);
+  border: 1px solid var(--pa-line);
+}
+.pa-project-card.image-fallback::before {
+  content: "IMAGEN PENDIENTE";
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-body);
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  color: var(--pa-slate);
+  opacity: 0.5;
+}
+.project-chip {
+  position: absolute;
+  top: var(--space-4);
+  left: var(--space-4);
+  z-index: 3;
+  background: rgba(10,13,10,0.8);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  padding: 4px 10px;
+  border-radius: 4px;
+  font-family: var(--font-body);
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--pa-text);
+  border: 1px solid rgba(243,240,232,0.1);
+}
+
+/* ── MOLECULE: AWARDS SPLIT ── */
+.awards-split-layout {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-8);
+  align-items: center;
+}
+@media (min-width: 1024px) {
+  .awards-split-layout {
+    grid-template-columns: 6fr 4fr;
+    gap: var(--space-10);
+  }
+}
+.awards-year {
+  display: flex;
+  justify-content: flex-end;
+  font-family: var(--font-display);
+  font-size: clamp(120px, 20vw, 240px);
+  font-weight: 300;
+  color: var(--pa-gold);
+  line-height: 0.8;
+  opacity: 0.3;
+}
+.awards-attribution {
+  display: block;
+  font-family: var(--font-body);
+  font-size: 12px;
+  color: var(--pa-slate);
+  margin-top: var(--space-5);
+  padding-top: var(--space-4);
+  border-top: 1px solid var(--pa-line);
+}
+
+/* ── UTILITY ── */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+/* ── BODY SCROLL LOCK ── */
+body.drawer-open { overflow: hidden; }

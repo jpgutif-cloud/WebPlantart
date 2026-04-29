@@ -1,0 +1,1141 @@
+<!DOCTYPE html>
+<html lang="es-CL">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plant Art — Infraestructura Biofílica y Paisajismo Premium | Santiago, Chile</title>
+    <meta name="description"
+        content="Plant Art diseña, construye y mantiene jardines verticales, muros verdes y sistemas de paisajismo integral para espacios corporativos, retail e institucionales. Santiago, Chile.">
+    <meta name="keywords"
+        content="jardines verticales santiago, muros verdes corporativos, paisajismo empresarial chile, biofilia arquitectura, infraestructura verde">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.plantart.cl/">
+    <meta property="og:title" content="Plant Art — Infraestructura Biofílica y Paisajismo Premium">
+    <meta property="og:description"
+        content="Firma especializada en biofilia aplicada, jardines verticales, muros verdes y mantenimiento comercial para entornos de alto estándar.">
+    <meta property="og:image" content="https://www.plantart.cl/assets/images/hero.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <link rel="canonical" href="https://www.plantart.cl/">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,400;1,500&family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="apple-touch-icon" href="favicon.png">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="styles.css">
+
+    <style>
+        /* --- Visual Effects System --- */
+        :root {
+            --pa-moss-particles: rgba(138, 184, 112, 0.4);
+        }
+
+        /* 1. Custom Cursor */
+        .custom-cursor, .custom-cursor-follower {
+            position: fixed;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+            z-index: 10000;
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            transition: width 0.3s cubic-bezier(0.23, 1, 0.32, 1), 
+                        height 0.3s cubic-bezier(0.23, 1, 0.32, 1), 
+                        background 0.3s, border 0.3s;
+        }
+        .custom-cursor {
+            width: 12px;
+            height: 12px;
+            background: #8ab870;
+        }
+        .custom-cursor-follower {
+            width: 40px;
+            height: 40px;
+            border: 1px solid #8ab870;
+            z-index: 9999;
+        }
+        .custom-cursor.active {
+            width: 24px;
+            height: 24px;
+        }
+        .custom-cursor-follower.active {
+            width: 60px;
+            height: 60px;
+        }
+        @media (max-width: 1024px) {
+            .custom-cursor, .custom-cursor-follower { display: none; }
+        }
+
+        /* 2. Navbar Sticky Animada */
+        .pa-header {
+            transition: all 0.4s ease;
+        }
+        .pa-header.scrolled {
+            background: rgba(15, 17, 14, 0.7) !important;
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(243, 240, 232, 0.08);
+            padding: 12px 0;
+            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05);
+        }
+
+        /* 3. Canvas Particles */
+        #hero-particles {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        /* 5. Scroll Reveals Base */
+        .pa-animate {
+            will-change: transform, opacity;
+            opacity: 0;
+        }
+
+        /* 8. Hover Project Cards */
+        .pa-project-card {
+            overflow: hidden;
+            display: block;
+        }
+        .pa-project-card img {
+            transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1) !important;
+        }
+        .pa-project-card:hover img {
+            transform: scale(1.08);
+        }
+
+        /* 9. Perpetual Micro-Interactions */
+        @keyframes perpetualFloat {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-6px); }
+        }
+        .pa-kpi .number {
+            display: inline-block;
+            animation: perpetualFloat 4s ease-in-out infinite;
+            animation-delay: calc(var(--delay, 0) * 1s);
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- 1. Custom Cursor Elements -->
+    <div class="custom-cursor"></div>
+    <div class="custom-cursor-follower"></div>
+
+    <!-- Drawer Overlay -->
+    <div class="mobile-drawer-overlay" aria-hidden="true"></div>
+
+    <!-- Mobile Drawer -->
+    <nav class="mobile-drawer" aria-label="Menú móvil" role="dialog" aria-modal="true">
+        <button class="close-drawer-btn" aria-label="Cerrar menú">
+            <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="1.5" fill="none"
+                stroke-linecap="round">
+                <line x1="18" y1="6" x2="6" y2="18" />
+                <line x1="6" y1="6" x2="18" y2="18" />
+            </svg>
+        </button>
+        <a href="#projects" class="nav-link">Proyectos</a>
+        <a href="#expertise" class="nav-link">Expertise</a>
+        <a href="#approach" class="nav-link">Metodología</a>
+        <a href="#about" class="nav-link">Nosotros</a>
+        <a href="#contact" class="nav-link">Contacto</a>
+    </nav>
+
+    <!-- Header -->
+    <header class="pa-header" role="banner">
+        <div class="pa-container">
+            <a href="index.html" class="logo" aria-label="Plant Art — Inicio">Plant Art</a>
+
+            <nav class="pa-header-nav" aria-label="Navegación principal">
+                <a href="#projects" class="nav-link">Proyectos</a>
+                <a href="#expertise" class="nav-link">Expertise</a>
+                <a href="#about" class="nav-link">Nosotros</a>
+                <a href="#contact" class="nav-link">Contacto</a>
+                <a href="#contact" class="pa-btn-primary compact">Solicitar propuesta</a>
+            </nav>
+
+            <button class="mobile-menu-btn" aria-label="Abrir menú" aria-expanded="false">
+                <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="1.5" fill="none"
+                    stroke-linecap="round">
+                    <line x1="4" y1="6" x2="20" y2="6" />
+                    <line x1="4" y1="12" x2="20" y2="12" />
+                    <line x1="4" y1="18" x2="20" y2="18" />
+                </svg>
+            </button>
+        </div>
+    </header>
+
+    <main>
+
+        <!-- ═══ HERO ═══ -->
+        <section id="hero" class="hero-section" aria-label="Presentación principal">
+            <div class="hero-background">
+                <img src="assets/images/hero.png" alt="Arquitectura biofílica contemporánea con vegetación integrada"
+                    loading="eager">
+                <div class="hero-overlay"></div>
+                <!-- 3. Particles Canvas -->
+                <canvas id="hero-particles"></canvas>
+            </div>
+            <div class="hero-content-wrapper pa-container">
+                <div class="hero-content">
+                    <div class="hero-trust-tag pa-animate" data-delay="50">
+                        <svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                        </svg>
+                        <span>25 Años de Experiencia</span>
+                        <span class="sep"></span>
+                        <span>+208k m² Operados</span>
+                    </div>
+                    <div class="hero-credibility-top pa-animate" data-delay="150">SANTIAGO, CHILE · ESTÁNDAR DE CONFIANZA</div>
+                    <span class="pa-eyebrow pa-animate" data-delay="200">INFRAESTRUCTURA BIOFÍLICA</span>
+                    <h1 class="hero-title pa-animate" data-delay="300">Infraestructura viva para el entorno construido.</h1>
+                    <p class="body-l pa-animate" data-delay="400" style="max-width: 580px; text-wrap: balance;">Diseñamos, construimos y mantenemos sistemas vegetales de alto estándar para arquitectura corporativa y retail.</p>
+
+                    <div class="ctas pa-animate" data-delay="600">
+                        <a href="#contact" class="pa-btn-primary">Solicitar propuesta</a>
+                        <a href="#projects" class="pa-btn-secondary">Ver proyectos</a>
+                    </div>
+                </div>
+            </div>
+            <div class="scroll-cue" aria-hidden="true">
+                <span class="scroll-text-cue">Scroll</span>
+                <div class="scroll-line-cue"></div>
+            </div>
+        </section>
+
+        <!-- ═══ PROJECTS ═══ -->
+        <section id="projects" class="pt-standard pb-standard bg-base" aria-labelledby="projects-title">
+            <div class="pa-container">
+                <header class="section-header pa-editorial-spacing pa-animate">
+                    <span class="pa-eyebrow">04 PROYECTOS SELECCIONADOS</span>
+                    <h2 id="projects-title">Trabajo que define estándar.</h2>
+                    <p class="body-m" style="text-wrap: balance;">Intervenciones que integran diseño biofílico, técnica precisa y mantenimiento continuo en entornos de alta exigencia.</p>
+                </header>
+
+                <div class="projects-grid">
+                    <!-- Large Card: MUT -->
+                    <a href="proyectos-mut.html" class="pa-project-card large pa-animate" style="--index: 1;"
+                        aria-label="Ver proyecto MUT Tobalaba">
+                        <img src="assets/images/mut (2).png"
+                            alt="Paisajismo integral MUT Tobalaba — 18.350 m² de áreas verdes" loading="lazy"
+                            onerror="this.onerror=null;this.parentElement.classList.add('image-fallback');this.style.display='none';">
+                        <span class="project-chip">Desarrollo Mixto</span>
+                        <div class="project-card-overlay">
+                            <span class="project-meta">Las Condes, Santiago · 18.350 m²</span>
+                            <h3 class="project-name">MUT Tobalaba</h3>
+                            <span class="pa-btn-text">Ver proyecto <svg viewBox="0 0 24 24" width="16" height="16"
+                                     stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round">
+                                    <line x1="5" y1="12" x2="19" y2="12" />
+                                    <polyline points="12 5 19 12 12 19" />
+                                </svg></span>
+                        </div>
+                    </a>
+
+                    <!-- Stacked Column -->
+                    <div class="projects-col-stacked">
+                        <!-- PAK -->
+                        <a href="proyectos-arauco.html" class="pa-project-card pa-animate" style="--index: 2;"
+                            aria-label="Ver proyecto Parque Arauco Kennedy">
+                            <img src="assets/images/PAK/parque-arauco-kennedy-paisajismo-corporativo-02.png"
+                                alt="Topiarios y jardines exteriores en Parque Arauco Kennedy" loading="lazy"
+                                onerror="this.onerror=null;this.parentElement.classList.add('image-fallback');this.style.display='none';">
+                            <span class="project-chip">Retail</span>
+                            <div class="project-card-overlay">
+                                <span class="project-meta">Las Condes, Chile · Desde 2005</span>
+                                <h3 class="project-name">Parque Arauco Kennedy</h3>
+                                <span class="pa-btn-text">Ver proyecto <svg viewBox="0 0 24 24" width="16" height="16"
+                                        stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round">
+                                        <line x1="5" y1="12" x2="19" y2="12" />
+                                        <polyline points="12 5 19 12 12 19" />
+                                    </svg></span>
+                            </div>
+                        </a>
+                        <!-- Casa Costanera -->
+                        <a href="proyectos-casacostanera.html" class="pa-project-card pa-animate" style="--index: 3;"
+                            aria-label="Ver proyecto Casa Costanera">
+                            <img src="assets/images/casa-costanera/casa-costanera-paisajismo-retail-01.png"
+                                alt="Paisajismo interior Casa Costanera" loading="lazy"
+                                onerror="this.onerror=null;this.parentElement.classList.add('image-fallback');this.style.display='none';">
+                            <span class="project-chip">Retail Luxury</span>
+                            <div class="project-card-overlay">
+                                <span class="project-meta">Vitacura, Chile · Operación Permanente</span>
+                                <h3 class="project-name">Casa Costanera</h3>
+                                <span class="pa-btn-text">Ver proyecto <svg viewBox="0 0 24 24" width="16" height="16"
+                                        stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round">
+                                        <line x1="5" y1="12" x2="19" y2="12" />
+                                        <polyline points="12 5 19 12 12 19" />
+                                    </svg></span>
+                            </div>
+                        </a>
+                        <!-- Plaza Egaña -->
+                        <a href="proyectos-plazaegana.html" class="pa-project-card pa-animate" style="--index: 4;"
+                            aria-label="Ver proyecto Mall Plaza Egaña">
+                            <img src="assets/images/plaza-egana/mall-plaza-egana-paisajismo-leed-01.png"
+                                alt="Muros verdes de fachada LEED Gold — Mall Plaza Egaña" loading="lazy"
+                                onerror="this.onerror=null;this.parentElement.classList.add('image-fallback');this.style.display='none';">
+                            <span class="project-chip">Muros Verdes LEED</span>
+                            <div class="project-card-overlay">
+                                <span class="project-meta">La Reina, Chile · LEED Gold · 6.400 m²</span>
+                                <h3 class="project-name">Mall Plaza Egaña</h3>
+                                <span class="pa-btn-text">Ver proyecto <svg viewBox="0 0 24 24" width="16" height="16"
+                                        stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round">
+                                        <line x1="5" y1="12" x2="19" y2="12" />
+                                        <polyline points="12 5 19 12 12 19" />
+                                    </svg></span>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="projects-cta pa-animate" data-delay="200">
+                    <a href="proyectos.html" class="pa-btn-secondary">Ver todos los proyectos</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- ═══ EXPERTISE ═══ -->
+        <section id="expertise" class="pt-standard pb-standard bg-deep" aria-labelledby="expertise-title">
+            <div class="pa-container">
+                <header class="section-header pa-editorial-spacing pa-animate">
+                    <span class="pa-eyebrow">NUESTRA EXPERTISE</span>
+                    <h2 id="expertise-title">Soluciones para cada escala del entorno construido.</h2>
+                    <p class="body-m" style="text-wrap: balance;">Diseñamos e implementamos soluciones biofílicas adaptadas a la arquitectura y los requerimientos operacionales.</p>
+                </header>
+
+                <div class="expertise-grid asymmetric">
+                    <div class="pa-service-card protagonist pa-animate" data-delay="100">
+                        <span class="pa-eyebrow">01. Jardines Verticales</span>
+                        <h3 class="h1" style="font-size: clamp(32px, 5vw, 56px); margin-bottom: var(--space-4);">Sistemas vivos integrados a la arquitectura.</h3>
+                        <p class="body-l" style="max-width: 48ch;">Diseñamos e instalamos muros verdes con tecnología hidropónica avanzada (Sistema Telmadermi), operando bajo estándares LEED Platino.</p>
+                        <a href="#contact" class="pa-btn-primary expertise-cta" style="background: var(--pa-moss); color: var(--pa-text); border: none;">Solicitar propuesta técnica</a>
+                    </div>
+
+                    <div class="expertise-compact-list" style="padding-top: var(--space-10);">
+                        <div class="pa-service-card compact pa-animate" data-delay="150">
+                            <span class="pa-eyebrow" style="color: var(--pa-slate);">02. Muros Verdes</span>
+                            <h3>Infraestructura viva de alto impacto.</h3>
+                        </div>
+                        <div class="pa-service-card compact pa-animate" data-delay="200">
+                            <span class="pa-eyebrow" style="color: var(--pa-slate);">03. Paisajismo Comercial</span>
+                            <h3>Diseño y mantención a gran escala.</h3>
+                        </div>
+                        <div class="pa-service-card compact pa-animate" data-delay="250">
+                            <span class="pa-eyebrow" style="color: var(--pa-slate);">04. Riego Automatizado</span>
+                            <h3>Precisión y eficiencia hídrica.</h3>
+                        </div>
+                        <div class="pa-service-card compact pa-animate" data-delay="300">
+                            <span class="pa-eyebrow" style="color: var(--pa-slate);">05. Techos Vegetales</span>
+                            <h3>Cubiertas biológicas urbanas.</h3>
+                        </div>
+                        <div class="pa-service-card compact pa-animate" data-delay="350">
+                            <span class="pa-eyebrow" style="color: var(--pa-slate);">06. Mantenimiento Especializado</span>
+                            <h3>Operación técnica garantizada.</h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ═══ APPROACH ═══ -->
+        <section id="approach" class="pt-editorial pb-editorial bg-base" aria-labelledby="approach-title">
+            <div class="pa-container">
+                <div class="approach-split-layout">
+                    <div class="approach-sticky-visual pa-animate" aria-hidden="true">
+                        <img src="assets/images/muros-y-techos-verdes/muros-techos-verdes-paisajismo-corporativo-01.png"
+                            alt="Instalación de infraestructura biofílica térmica y acústica" loading="lazy">
+                    </div>
+
+                    <div class="approach-content-scroll">
+                        <header class="section-header pa-animate">
+                            <span class="pa-eyebrow">NUESTRA METODOLOGÍA</span>
+                            <h2 id="approach-title">De la estrategia a la operación permanente.</h2>
+                            <p class="body-m">Cada proyecto atraviesa un proceso riguroso de ingeniería ecológica y
+                                construcción. No entregamos un jardín; diseñamos un sistema vivo que funciona a lo largo
+                                del tiempo.</p>
+                        </header>
+
+                        <div class="approach-steps-typographic pa-animate" data-delay="200">
+                            <div class="pa-step-typo">
+                                <span class="pa-step-big-numeral">01</span>
+                                <h3>Diagnóstico y estrategia</h3>
+                                <p>Evaluamos el activo, los requerimientos del cliente y las condiciones del espacio
+                                    para definir una solución coherente con arquitectura, marca y uso real.</p>
+                            </div>
+                            <div class="pa-step-typo">
+                                <span class="pa-step-big-numeral">02</span>
+                                <h3>Diseño integrado</h3>
+                                <p>Desarrollamos propuesta biofílica adaptada al espacio, al programa y al estándar
+                                    visual del cliente. Selección de especies, volumetría y sistema técnico.</p>
+                            </div>
+                            <div class="pa-step-typo">
+                                <span class="pa-step-big-numeral">03</span>
+                                <h3>Ejecución especializada</h3>
+                                <p>Implementamos con equipo propio y supervisión técnica permanente. Cada instalación se
+                                    realiza con estándares verificables y cronograma definido contractualmente.</p>
+                            </div>
+                            <div class="pa-step-typo">
+                                <span class="pa-step-big-numeral">04</span>
+                                <h3>Puesta en marcha</h3>
+                                <p>Activamos sistemas de riego, verificamos comportamiento vegetal y ajustamos todos los
+                                    parámetros técnicos antes de entregar el espacio.</p>
+                            </div>
+                            <div class="pa-step-typo">
+                                <span class="pa-step-big-numeral">05</span>
+                                <h3>Mantenimiento continuo</h3>
+                                <p>Operación continua con cronograma, supervisión especializada y criterios de servicio
+                                    trazables.</p>
+                            </div>
+                        </div>
+
+                        <div class="approach-elevated-quote pa-animate">
+                            <blockquote>«La naturaleza que instalamos<br>es la naturaleza que cuidamos.»</blockquote>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ═══ CLIENTS ═══ -->
+        <section id="clients" class="pt-compact pb-compact clients-section" aria-labelledby="clients-eyebrow">
+            <div class="pa-container">
+                <div class="clients-header pa-animate">
+                    <span class="pa-eyebrow" id="clients-eyebrow">12 CLIENTES ACTIVOS · RETAIL, SALUD Y
+                        CORPORATIVO</span>
+                </div>
+
+                <!-- Retail -->
+                <div class="clients-sector pa-animate" data-delay="100">
+                    <span class="clients-sector-label">Retail & Desarrollos</span>
+                    <div class="clients-logo-grid">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/a/a2/Logo_Parque_Arauco.svg" alt="Parque Arauco" class="client-logo">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/a/a6/Mallplaza_logo.svg" alt="Mallplaza" class="client-logo">
+                        <img src="https://www.mut.cl/wp-content/uploads/2021/11/logo-mut.png" alt="MUT Tobalaba" class="client-logo">
+                        <img src="https://www.casacostanera.cl/assets/img/logo-casa-costanera.svg" alt="Casa Costanera" class="client-logo">
+                    </div>
+                </div>
+
+                <!-- Corporativo & Salud -->
+                <div class="clients-sector pa-animate" data-delay="200">
+                    <span class="clients-sector-label">Corporativo & Salud</span>
+                    <div class="clients-logo-grid">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/b/b8/Banco_Santander_Logotipo.svg" alt="Banco Santander" class="client-logo">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/d/df/Bayer_Logo.svg" alt="Bayer" class="client-logo">
+                        <img src="https://www.clinicasantamaria.cl/wp-content/uploads/2022/03/logo-clinica-santa-maria-footer.png" alt="Clínica Santa María" class="client-logo">
+                        <img src="https://www.cap.cl/wp-content/uploads/2021/04/logo-cap.png" alt="CAP Chile" class="client-logo">
+                        <img src="https://www.grunenthal.com/-/media/images/grunenthal/corporate/logo/grunenthal_logo_rgb.png" alt="Grünenthal" class="client-logo">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ═══ RECOGNITION ═══ -->
+        <section id="reconocimientos" class="pt-editorial pb-editorial bg-deep" aria-labelledby="awards-title">
+            <div class="pa-container">
+                <div class="awards-split-layout pa-animate reveal-scale">
+                    <div class="awards-content">
+                        <span class="pa-eyebrow awards-eyebrow" style="color: var(--pa-gold);">RECONOCIMIENTO</span>
+                        <h2 id="awards-title" class="awards-title">Presencia en MUT Tobalaba, único proyecto
+                            latinoamericano ganador del ULI Americas Awards for Excellence 2025.</h2>
+                        <p class="body-m awards-body">
+                            La excelencia técnica e impacto biofílico del Mercado Urbano Tobalaba han sido galardonados
+                            internacionalmente. Construimos infraestructura verde capaz de establecer estándares
+                            globales en desarrollos arquitectónicos mixtos.
+                        </p>
+                        <span class="awards-attribution">El premio ULI Americas Awards for Excellence 2025 reconoce el ciclo
+                            de vida completo de un proyecto. Plant Art es responsable del diseño, ejecución y
+                            mantenimiento vivo de MUT.</span>
+                    </div>
+                    <div class="awards-year">
+                        <span>2025</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ═══ SISTEMA TELMADERMI (FABRICACIÓN PROPIA) ═══ -->
+        <style>
+            .telmadermi-section {
+                position: relative;
+                width: 100vw;
+                min-height: 100svh;
+                display: grid;
+                align-items: center;
+                justify-items: center;
+                overflow: hidden;
+                background-color: var(--pa-surface);
+            }
+
+            .telmadermi-bg {
+                position: absolute;
+                inset: 0;
+                z-index: 0;
+            }
+
+            .telmadermi-bg img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+
+            .telmadermi-bg::after {
+                content: '';
+                position: absolute;
+                inset: 0;
+                background: rgba(10, 13, 10, 0.78);
+            }
+
+            .telmadermi-inner {
+                position: relative;
+                z-index: 1;
+                display: grid;
+                grid-template-columns: 1fr;
+                gap: var(--space-8);
+                width: 100%;
+            }
+
+            @media (min-width: 1024px) {
+                .telmadermi-inner {
+                    grid-template-columns: 5.5fr 4.5fr;
+                    align-items: center;
+                }
+            }
+
+            .telmadermi-copy {
+                display: flex;
+                flex-direction: column;
+                gap: var(--space-4);
+            }
+
+            .telmadermi-eyebrow {
+                font-family: 'Inter', sans-serif;
+                font-size: 11px;
+                font-weight: 500;
+                letter-spacing: 0.18em;
+                text-transform: uppercase;
+                color: var(--pa-moss);
+            }
+
+            .telmadermi-title {
+                font-family: 'Cormorant Garamond', serif;
+                font-size: clamp(52px, 8vw, 96px);
+                font-weight: 500;
+                font-style: normal;
+                letter-spacing: -0.02em;
+                line-height: 0.95;
+                color: var(--pa-text);
+            }
+
+            .telmadermi-body {
+                font-family: 'Inter', sans-serif;
+                font-size: 18px;
+                line-height: 1.72;
+                color: var(--pa-text-muted);
+                max-width: 52ch;
+            }
+
+            /* Barra de datos */
+            .telmadermi-data-bar {
+                margin-top: var(--space-8);
+                background: rgba(27, 34, 27, 0.65);
+                backdrop-filter: blur(12px);
+                -webkit-backdrop-filter: blur(12px);
+                border: 1px solid rgba(243, 240, 232, 0.1);
+                border-radius: 20px;
+                padding: 32px 0;
+                display: grid;
+                grid-template-columns: repeat(4, 1fr);
+                gap: 0;
+                align-items: center;
+            }
+
+            .telmadermi-data-cell {
+                padding: 0 24px;
+                display: flex;
+                flex-direction: column-reverse;
+                gap: 10px;
+                border-right: 1px solid rgba(243, 240, 232, 0.08);
+            }
+
+            .telmadermi-data-cell:last-child { 
+                border-right: none;
+            }
+
+            .telmadermi-data-number {
+                font-family: 'Manrope', sans-serif;
+                font-weight: 700;
+                font-size: 24px;
+                letter-spacing: -0.01em;
+                color: var(--pa-text);
+                margin: 0;
+                line-height: 1;
+                white-space: nowrap;
+            }
+
+            .telmadermi-data-label {
+                font-family: 'Inter', sans-serif;
+                font-weight: 500;
+                font-size: 11px;
+                text-transform: uppercase;
+                letter-spacing: 0.16em;
+                line-height: 1.4;
+                color: var(--pa-text-muted);
+                margin: 0;
+                max-width: 140px;
+            }
+
+            /* CTA */
+            .telmadermi-cta {
+                margin-top: var(--space-6);
+                align-self: flex-start;
+            }
+
+            /* Responsive */
+            @media (max-width: 1100px) {
+                .telmadermi-data-bar {
+                    grid-template-columns: repeat(2, 1fr);
+                    gap: 24px 0;
+                }
+                .telmadermi-data-cell:nth-child(2) { border-right: none; }
+                .telmadermi-data-cell:nth-child(3) { border-top: 1px solid var(--pa-line); padding-top: 24px; }
+                .telmadermi-data-cell:nth-child(4) { border-top: 1px solid var(--pa-line); padding-top: 24px; }
+            }
+
+            @media (max-width: 767px) {
+                .telmadermi-section {
+                    height: auto;
+                    padding: 80px 0;
+                }
+                .telmadermi-data-bar {
+                    grid-template-columns: 1fr;
+                    gap: 24px;
+                }
+                .telmadermi-data-cell {
+                    border-right: none;
+                    border-bottom: 1px solid var(--pa-line);
+                    padding: 0 0 24px 0;
+                }
+                .telmadermi-data-cell:last-child {
+                    border-bottom: none;
+                    padding-bottom: 0;
+                }
+                .telmadermi-data-cell:nth-child(3),
+                .telmadermi-data-cell:nth-child(4) {
+                    border-top: none;
+                    padding-top: 0;
+                }
+            }
+
+            @media (max-width: 640px) {
+                .telmadermi-title {
+                    font-size: clamp(40px, 10vw, 60px);
+                }
+            }
+        </style>
+
+        <section id="telmadermi" class="telmadermi-section" aria-labelledby="telmadermi-title">
+            <!-- Fondo fotográfico -->
+            <div class="telmadermi-bg" aria-hidden="true">
+                <img src="assets/images/MUT/paisajismo-corporativo-mut-mercado-urbano-tobalaba-plantart-04.png" 
+                     alt="" 
+                     onerror="this.style.display='none'; this.parentElement.style.backgroundColor='var(--pa-surface)';" />
+            </div>
+
+            <!-- Contenido -->
+            <div class="pa-container telmadermi-inner">
+                <div class="telmadermi-copy pa-animate">
+                    <span class="telmadermi-eyebrow">SISTEMA DE FABRICACIÓN PROPIO</span>
+                    <h2 id="telmadermi-title" class="telmadermi-title">Sistema Telmadermi.</h2>
+                    <p class="telmadermi-body">Infraestructura vegetal con metodología propia, escalable a cualquier arquitectura y fabricada íntegramente con materiales 100% reciclados de Chile. Optimizamos el desempeño térmico operando en activos LEED Platino con reducción documentada de hasta −2°C en temperatura ambiente.</p>
+                    
+                    <!-- Barra de datos semántica -->
+                    <dl class="telmadermi-data-bar glass-refraction pa-animate" data-delay="150" aria-label="Especificaciones técnicas del Sistema Telmadermi">
+                        <div class="telmadermi-data-cell">
+                            <dt class="telmadermi-data-label">Reducción de temperatura</dt>
+                            <dd class="telmadermi-data-number" style="font-family: var(--font-mono); font-size: 32px;">−2°C</dd>
+                        </div>
+                        <div class="telmadermi-data-cell">
+                            <dt class="telmadermi-data-label">Módulo estándar</dt>
+                            <dd class="telmadermi-data-number" style="font-family: var(--font-mono);">60×60 cm</dd>
+                        </div>
+                        <div class="telmadermi-data-cell">
+                            <dt class="telmadermi-data-label">Materiales reciclados</dt>
+                            <dd class="telmadermi-data-number" style="font-family: var(--font-mono);">100%</dd>
+                        </div>
+                        <div class="telmadermi-data-cell">
+                            <dt class="telmadermi-data-label">Activos en operación</dt>
+                            <dd class="telmadermi-data-number">LEED</dd>
+                        </div>
+                    </dl>
+
+                    <!-- CTA -->
+                    <a href="proyectos.html" class="pa-btn-text telmadermi-cta pa-animate" data-delay="250" aria-label="Ver proyectos con muros verdes de Plant Art">
+                        Ver proyectos de muros verdes
+                        <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round">
+                            <line x1="5" y1="12" x2="19" y2="12" />
+                            <polyline points="12 5 19 12 12 19" />
+                        </svg>
+                    </a>
+                </div>
+
+                <!-- Espacio visual (desktop 45%) -->
+                <div class="telmadermi-visual-spacer" aria-hidden="true"></div>
+            </div>
+        </section>
+
+        <!-- ═══ IMPACT / TRUST ═══ -->
+        <section id="impact" class="pt-editorial pb-editorial bg-base" aria-label="Impacto y confianza">
+            <div class="pa-container">
+
+                <!-- KPIs -->
+                <div class="kpi-row pa-animate reveal">
+                    <div class="pa-kpi">
+                        <div class="number" style="--delay: 0;">+25</div>
+                        <div class="kpi-micro-context">Años de continuidad</div>
+                        <div class="kpi-divider"></div>
+                        <span class="pa-label">Operación ininterrumpida</span>
+                    </div>
+                    <div class="pa-kpi">
+                        <div class="number" style="--delay: 0.5;">+208k</div>
+                        <div class="kpi-micro-context">Metros cuadrados</div>
+                        <div class="kpi-divider"></div>
+                        <span class="pa-label">Infraestructura bajo gestión</span>
+                    </div>
+                    <div class="pa-kpi">
+                        <div class="number" style="--delay: 1;">+30</div>
+                        <div class="kpi-micro-context">Desarrollos de alto nivel</div>
+                        <div class="kpi-divider"></div>
+                        <span class="pa-label">Clientes activos concurrentes</span>
+                    </div>
+                    <div class="pa-kpi">
+                        <div class="number" style="--delay: 1.5;">+13</div>
+                        <div class="kpi-micro-context">Protocolos técnicos</div>
+                        <div class="kpi-divider"></div>
+                        <span class="pa-label">Especialistas en terreno</span>
+                    </div>
+                </div>
+
+                <!-- Trust Blocks / Narrative -->
+                <div class="trust-row pa-animate" data-delay="200">
+                    <div class="pa-trust">
+                        <span class="accent">Operación Técnica</span>
+                        <h3>Integración total</h3>
+                        <p class="body-m">No entregamos un jardín, diseñamos un sistema vivo. Esto exige un despliegue
+                            de ingeniería vegetal desde el día uno, validando sustrato, iluminación y soporte
+                            estructural previo a la instalación.</p>
+                    </div>
+                    <div class="pa-trust">
+                        <span class="accent">Eficiencia Hídrica</span>
+                        <h3>Control y precisión</h3>
+                        <p class="body-m">Nuestras matrices de riego y sistemas telemetrizados garantizan el
+                            abastecimiento adecuado y la optimización de los consumos para cada microclima dentro de los
+                            activos de gran magnitud.</p>
+                    </div>
+                    <div class="pa-trust">
+                        <span class="accent">Supervisión Interna</span>
+                        <h3>Responsabilidad absoluta</h3>
+                        <p class="body-m">Operamos sin tercerizar el equipamiento crítico. Contamos con flota propia de plataformas elevadoras y personal altamente capacitado para intervenir áreas de alto flujo sin alterar la operación del activo.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ═══ ABOUT ═══ -->
+        <section id="about" class="pt-editorial pb-editorial bg-deep" aria-labelledby="about-title">
+            <div class="pa-container about-grid">
+                <div class="about-text pa-animate">
+                    <span class="pa-eyebrow">SANTIAGO, CHILE · DESDE 2001</span>
+                    <h2 id="about-title">Una firma que convierte la naturaleza en infraestructura.</h2>
+                    <div class="about-body">
+                        <p class="body-l">Plant Art es una firma especializada en infraestructura biofílica, paisajismo
+                            integrado y operación vegetal para el entorno construido.</p>
+                        <p class="body-l">Diseñamos sistemas vivos que responden a la arquitectura, al uso real del
+                            espacio y a los requerimientos operacionales de cada activo.</p>
+                        <p class="body-l about-emphasis">Nuestro trabajo no termina con la instalación. Termina cuando
+                            el sistema cumple su propósito de forma continua, estable y precisa.</p>
+                    </div>
+                </div>
+                <div class="about-image-wrapper pa-animate" data-delay="200">
+                    <img src="assets/images/about.png" alt="Proyecto de paisajismo interior Plant Art"
+                        class="about-image" loading="lazy"
+                        onerror="this.onerror=null; this.style.display='none'; this.parentElement.classList.add('about-image--fallback');">
+                    <div class="about-image-fallback-content" aria-hidden="true">
+                        <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" width="48" height="48">
+                            <path d="M32 8C32 8 14 20 14 36a18 18 0 0036 0C50 20 32 8 32 8z" stroke="var(--pa-moss)"
+                                stroke-width="1.5" fill="none" />
+                            <path d="M32 32c0-10 8-18 8-18" stroke="var(--pa-moss)" stroke-width="1.5" fill="none"
+                                stroke-linecap="round" />
+                        </svg>
+                        <span>Plant Art</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ═══ CONTACT ═══ -->
+        <section id="contact" class="pt-editorial pb-editorial bg-base" aria-labelledby="contact-title">
+            <div class="pa-container contact-grid">
+                <div class="contact-intro pa-animate">
+                    <span class="pa-eyebrow">Contacto</span>
+                    <h2 id="contact-title">Cuéntenos el alcance.<br>Evaluamos sin compromiso.</h2>
+                    <p class="body-m">Complete el formulario o contáctenos directamente. Respondemos en un plazo máximo
+                        de 24 horas hábiles.</p>
+
+                    <div class="contact-info-list">
+                        <div class="contact-info-item">
+                            <svg viewBox="0 0 24 24">
+                                <rect x="2" y="4" width="20" height="16" rx="2" />
+                                <polyline points="22,7 12,13 2,7" />
+                            </svg>
+                            <a href="mailto:contacto@plantart.cl">contacto@plantart.cl</a>
+                        </div>
+                        <div class="contact-info-item">
+                            <svg viewBox="0 0 24 24">
+                                <path
+                                    d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z" />
+                            </svg>
+                            Respuesta en máx. 24h hábiles
+                        </div>
+                        <div class="contact-info-item">
+                            <svg viewBox="0 0 24 24">
+                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z" />
+                                <circle cx="12" cy="10" r="3" />
+                            </svg>
+                            Santiago, Chile · Operación Nacional
+                        </div>
+                    </div>
+                </div>
+
+                <div class="contact-form-wrapper pa-animate" data-delay="200">
+                    <form id="contactForm" class="form-grid" novalidate>
+                        <div class="form-row-2">
+                            <div class="form-group">
+                                <label class="pa-label" for="nombre">Nombre *</label>
+                                <input type="text" id="nombre" name="nombre" class="pa-input"
+                                    placeholder="Nombre y apellido" required autocomplete="name">
+                            </div>
+                            <div class="form-group">
+                                <label class="pa-label" for="empresa">Empresa *</label>
+                                <input type="text" id="empresa" name="empresa" class="pa-input"
+                                    placeholder="Empresa / Institución" required autocomplete="organization">
+                            </div>
+                        </div>
+                        <div class="form-row-2">
+                            <div class="form-group">
+                                <label class="pa-label" for="cargo">Cargo</label>
+                                <input type="text" id="cargo" name="cargo" class="pa-input" placeholder="Cargo o área"
+                                    autocomplete="organization-title">
+                            </div>
+                            <div class="form-group">
+                                <label class="pa-label" for="correo">Correo corporativo *</label>
+                                <input type="email" id="correo" name="correo" class="pa-input"
+                                    placeholder="correo@empresa.com" required autocomplete="email">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="pa-label" for="telefono">Teléfono</label>
+                            <input type="tel" id="telefono" name="telefono" class="pa-input"
+                                placeholder="+56 9 XXXX XXXX" autocomplete="tel">
+                        </div>
+                        <div class="form-group">
+                            <label class="pa-label" for="proyecto">Descripción del proyecto *</label>
+                            <textarea id="proyecto" name="proyecto" class="pa-textarea"
+                                placeholder="Describa brevemente el tipo de espacio, alcance y requerimiento"
+                                required></textarea>
+                        </div>
+                        <button type="submit" class="pa-btn-primary w-full">Solicitar contacto ejecutivo</button>
+                    </form>
+                    <div id="formSuccess" class="form-success-message" role="alert">
+                        Gracias por contactarnos.<br>Un especialista revisará su solicitud y responderá en las próximas
+                        24 horas hábiles.
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- ═══ FOOTER ═══ -->
+    <footer class="pa-footer" role="contentinfo">
+        <div class="pa-container">
+            <div class="footer-super-tagline pa-animate">
+                <h2>Infraestructura biofílica para el entorno construido.</h2>
+            </div>
+
+            <div class="footer-grid">
+                <!-- Col 1: Brand -->
+                <div>
+                    <div class="footer-logo">Plant Art</div>
+                    <div class="footer-social">
+                        <a href="https://instagram.com/plantart_cl" target="_blank" rel="noopener"
+                            aria-label="Instagram de Plant Art">
+                            <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="1.5"
+                                fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="2" y="2" width="20" height="20" rx="5" />
+                                <circle cx="12" cy="12" r="5" />
+                                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
+                            </svg>
+                        </a>
+                        <a href="https://facebook.com/plantart_cl" target="_blank" rel="noopener"
+                            aria-label="Facebook de Plant Art">
+                            <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="1.5"
+                                fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />
+                            </svg>
+                        </a>
+                        <a href="https://cl.linkedin.com/company/plant-art" target="_blank" rel="noopener"
+                            aria-label="LinkedIn de Plant Art">
+                            <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="1.5"
+                                fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6z" />
+                                <rect x="2" y="9" width="4" height="12" />
+                                <circle cx="4" cy="4" r="2" />
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Col 2: Nav -->
+                <div>
+                    <h4 class="footer-col-title">Navegación</h4>
+                    <div class="footer-links">
+                        <a href="proyectos.html">Proyectos</a>
+                        <a href="#expertise">Expertise</a>
+                        <a href="#approach">Metodología</a>
+                        <a href="#about">Nosotros</a>
+                        <a href="#contact">Contacto</a>
+                    </div>
+                </div>
+
+                <!-- Col 3: Services -->
+                <div>
+                    <h4 class="footer-col-title">Servicios</h4>
+                    <div class="footer-links">
+                        <a href="#expertise">Jardines Verticales</a>
+                        <a href="#expertise">Muros Verdes</a>
+                        <a href="#expertise">Paisajismo Comercial</a>
+                        <a href="#expertise">Riego Automatizado</a>
+                        <a href="#expertise">Techos Vegetales</a>
+                        <a href="#expertise">Mantenimiento</a>
+                    </div>
+                </div>
+
+                <!-- Col 4: Contact -->
+                <div>
+                    <h4 class="footer-col-title">Contacto</h4>
+                    <div class="footer-links">
+                        <a href="mailto:contacto@plantart.cl">contacto@plantart.cl</a>
+                        <a href="tel:+56984640878">+56 9 8464 0878</a>
+                        <span class="footer-address">Santiago, Chile</span>
+                        <a href="#contact" class="pa-btn-text footer-proposal-link">Solicitar propuesta <svg
+                                viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="1.5"
+                                fill="none" stroke-linecap="round">
+                                <line x1="5" y1="12" x2="19" y2="12" />
+                                <polyline points="12 5 19 12 12 19" />
+                            </svg></a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <span>© 2026 Plant Art. Todos los derechos reservados.</span>
+                <span>Santiago, Chile</span>
+            </div>
+        </div>
+    </footer>
+
+    <!-- GSAP & Effects Implementation -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            gsap.registerPlugin(ScrollTrigger);
+
+            /* 1. CURSOR PERSONALIZADO */
+            const cursor = document.querySelector('.custom-cursor');
+            const follower = document.querySelector('.custom-cursor-follower');
+            let mouseX = 0, mouseY = 0, posX = 0, posY = 0;
+
+            document.addEventListener('mousemove', e => {
+                mouseX = e.clientX;
+                mouseY = e.clientY;
+                gsap.set(cursor, { x: mouseX, y: mouseY });
+            });
+
+            function updateFollower() {
+                posX += (mouseX - posX) * 0.12;
+                posY += (mouseY - posY) * 0.12;
+                gsap.set(follower, { x: posX, y: posY });
+                requestAnimationFrame(updateFollower);
+            }
+            updateFollower();
+
+            const hoverElems = document.querySelectorAll('a, button, .pa-project-card');
+            hoverElems.forEach(el => {
+                el.addEventListener('mouseenter', () => {
+                    cursor.classList.add('active');
+                    follower.classList.add('active');
+                });
+                el.addEventListener('mouseleave', () => {
+                    cursor.classList.remove('active');
+                    follower.classList.remove('active');
+                });
+            });
+
+            /* 2. NAVBAR STICKY */
+            const header = document.querySelector('.pa-header');
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 60) header.classList.add('scrolled');
+                else header.classList.remove('scrolled');
+            });
+
+            /* 3. HERO CON PARTÍCULAS */
+            const canvas = document.getElementById('hero-particles');
+            const ctx = canvas.getContext('2d');
+            let particles = [];
+            
+            function initParticles() {
+                if (!canvas) return;
+                canvas.width = window.innerWidth;
+                canvas.height = document.querySelector('.hero-section').offsetHeight;
+                particles = [];
+                for(let i=0; i<80; i++) {
+                    particles.push({
+                        x: Math.random() * canvas.width,
+                        y: Math.random() * canvas.height,
+                        vx: (Math.random() - 0.5) * 0.4,
+                        vy: (Math.random() - 0.5) * 0.4,
+                        size: Math.random() * 2 + 1
+                    });
+                }
+            }
+
+            function drawParticles() {
+                if (!canvas) return;
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                ctx.fillStyle = 'rgba(138, 184, 112, 0.4)';
+                ctx.strokeStyle = 'rgba(138, 184, 112, 0.15)';
+                
+                particles.forEach((p, i) => {
+                    p.x += p.vx;
+                    p.y += p.vy;
+                    if(p.x < 0) p.x = canvas.width;
+                    if(p.x > canvas.width) p.x = 0;
+                    if(p.y < 0) p.y = canvas.height;
+                    if(p.y > canvas.height) p.y = 0;
+                    
+                    ctx.beginPath();
+                    ctx.arc(p.x, p.y, p.size, 0, Math.PI*2);
+                    ctx.fill();
+                    
+                    for(let j=i+1; j<particles.length; j++) {
+                        const p2 = particles[j];
+                        const dist = Math.hypot(p.x - p2.x, p.y - p2.y);
+                        if(dist < 120) {
+                            ctx.beginPath();
+                            ctx.moveTo(p.x, p.y);
+                            ctx.lineTo(p2.x, p2.y);
+                            ctx.stroke();
+                        }
+                    }
+                });
+                requestAnimationFrame(drawParticles);
+            }
+            initParticles();
+            drawParticles();
+            window.addEventListener('resize', initParticles);
+
+            /* 4. GSAP ENTRANCE HERO */
+            const heroTl = gsap.timeline({ delay: 0.3 });
+            heroTl.fromTo('.hero-trust-tag', { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.8, ease: 'power3.out' })
+                  .fromTo('.hero-credibility-top', { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.8, ease: 'power3.out' }, '-=0.6')
+                  .fromTo('.hero-content .pa-eyebrow', { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.8, ease: 'power3.out' }, '-=0.6')
+                  .fromTo('.hero-content .hero-title', { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: 1, ease: 'power3.out' }, '-=0.7')
+                  .fromTo('.hero-content .body-l', { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 1, ease: 'power3.out' }, '-=0.8')
+                  .fromTo('.hero-content .ctas', { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 1, ease: 'power3.out' }, '-=0.8');
+
+            /* 5. SCROLL-TRIGGERED REVEALS */
+            gsap.utils.toArray('.pa-animate').forEach(el => {
+                if (el.closest('#hero')) return;
+                
+                let x = 0, y = 40, scale = 1;
+                if (el.classList.contains('reveal-left')) { x = -60; y = 0; }
+                else if (el.classList.contains('reveal-right')) { x = 60; y = 0; }
+                else if (el.classList.contains('reveal-scale')) { scale = 0.9; y = 0; }
+
+                const index = parseFloat(getComputedStyle(el).getPropertyValue('--index')) || 0;
+                const delay = index * 0.15;
+
+                gsap.fromTo(el, 
+                    { opacity: 0, x: x, y: y, scale: scale },
+                    {
+                        opacity: 1,
+                        x: 0,
+                        y: 0,
+                        scale: 1,
+                        duration: 1.4,
+                        delay: delay,
+                        ease: 'expo.out',
+                        scrollTrigger: {
+                            trigger: el,
+                            start: 'top 92%',
+                            once: true
+                        }
+                    }
+                );
+            });
+
+            /* 6. COUNT-UP ANIMADO */
+            const countUp = (el, target) => {
+                let obj = { val: 0 };
+                const originalText = el.innerText;
+                gsap.to(obj, {
+                    val: target,
+                    duration: 2.5,
+                    ease: 'power3.out',
+                    scrollTrigger: { trigger: el, start: 'top 90%' },
+                    onUpdate: () => {
+                        if (originalText.includes('°')) el.innerText = `−${Math.round(obj.val)}°C`;
+                        else if (originalText.includes('%')) el.innerText = `${Math.round(obj.val)}%`;
+                        else if (originalText.includes('k')) el.innerText = `+${Math.round(obj.val)}k`;
+                        else if (originalText.includes('LEED')) el.innerText = 'LEED';
+                        else el.innerText = `+${Math.round(obj.val)}`;
+                    }
+                });
+            };
+
+            document.querySelectorAll('.telmadermi-data-number, .pa-kpi .number, .data-bridge-value').forEach(el => {
+                const valStr = el.innerText.replace(/[^0-9]/g, '');
+                const val = parseFloat(valStr);
+                if(!isNaN(val) && valStr !== '') countUp(el, val);
+            });
+
+            /* 7. PARALLAX HERO */
+            gsap.to('.hero-background', {
+                yPercent: 30,
+                ease: 'none',
+                scrollTrigger: {
+                    trigger: '#hero',
+                    start: 'top top',
+                    end: 'bottom top',
+                    scrub: true
+                }
+            });
+        });
+    </script>
+
+    <!-- Main JS (deferred) -->
+    <script src="main.js" defer></script>
+
+</body>
+
+</html>

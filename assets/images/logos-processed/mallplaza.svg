@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 200" width="500" height="200">
+  <title>Mallplaza</title>
+  <!-- Normalized monochrome white logo -->
+  <g fill="#FFFFFF">
+    <text x="50" y="120" font-family="Arial, sans-serif" font-size="82" font-weight="800" letter-spacing="-3" fill="#FFFFFF">mall</text>
+    <text x="258" y="120" font-family="Arial, sans-serif" font-size="82" font-weight="300" letter-spacing="-2" fill="#FFFFFF">plaza</text>
+    <rect x="50" y="132" width="400" height="4" fill="#FFFFFF" opacity="0.5" rx="2"/>
+  </g>
+</svg>

@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 200" width="500" height="200">
+  <title>Andromaco</title>
+  <!-- Normalized monochrome white logo — pharma lab -->
+  <g fill="#FFFFFF">
+    <!-- Stylized A mark -->
+    <polygon points="75,155 125,45 175,155" fill="none" stroke="#FFFFFF" stroke-width="9" stroke-linejoin="round"/>
+    <rect x="91" y="115" width="68" height="10" rx="2" fill="#FFFFFF"/>
+    <!-- Wordmark -->
+    <text x="205" y="115" font-family="Arial, sans-serif" font-size="46" font-weight="600" letter-spacing="-1" fill="#FFFFFF">Andromaco</text>
+  </g>
+</svg>

@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 200" width="500" height="200">
+  <title>Canal 13</title>
+  <!-- Normalized monochrome white logo — TV channel -->
+  <g fill="#FFFFFF">
+    <!-- Numeral 13 large -->
+    <text x="50" y="155" font-family="Arial, sans-serif" font-size="120" font-weight="900" letter-spacing="-4" fill="#FFFFFF">13</text>
+    <!-- Divider -->
+    <rect x="50" y="165" width="180" height="3" rx="1.5" fill="#FFFFFF" opacity="0.4"/>
+    <text x="52" y="186" font-family="Arial, sans-serif" font-size="18" font-weight="400" letter-spacing="4" fill="#FFFFFF" opacity="0.65">CANAL</text>
+  </g>
+</svg>

@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 200" width="500" height="200">
+  <title>Casa Costanera</title>
+  <!-- Normalized monochrome white logo -->
+  <g fill="#FFFFFF">
+    <!-- Decorative arc element -->
+    <path d="M 50,120 Q 130,40 210,120" fill="none" stroke="#FFFFFF" stroke-width="3" opacity="0.7"/>
+    <text x="50" y="165" font-family="Georgia, serif" font-size="38" font-weight="400" letter-spacing="1" fill="#FFFFFF">CASA COSTANERA</text>
+    <rect x="50" y="175" width="340" height="1.5" fill="#FFFFFF" opacity="0.35"/>
+  </g>
+</svg>

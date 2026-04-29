@@ -974,57 +974,152 @@ h3, .h3 {
   line-height: 1.2;
 }
 
-/* ── MOLECULE: CLIENT WALL (Brand Book §9 — bg-deep, hairlines top/bottom) ── */
+/* ── MOLECULE: CLIENT WALL — Infinite Marquee ── */
 .clients-section {
   border-top: 1px solid var(--pa-line);
   border-bottom: 1px solid var(--pa-line);
   background: var(--pa-bg-deep);
+  padding: var(--space-8) 0 var(--space-9);
+  overflow: hidden;
 }
 
-/* Client header aligned left like section headers */
-.clients-header { margin-bottom: var(--space-7); }
+.clients-header {
+  margin-bottom: var(--space-7);
+  text-align: center;
+}
 .clients-header .pa-eyebrow { margin-bottom: 0; }
 
-/* Sector grouping — industry categories */
-.clients-sector {
+/* ── MARQUEE WRAPPER: clip overflow, fade masks on edges ── */
+.clients-marquee-wrapper {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+}
+
+/* Soft fade masks left/right — premium edge treatment */
+.clients-marquee-wrapper::before,
+.clients-marquee-wrapper::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 120px;
+  z-index: 2;
+  pointer-events: none;
+}
+.clients-marquee-wrapper::before {
+  left: 0;
+  background: linear-gradient(to right, var(--pa-bg-deep) 0%, transparent 100%);
+}
+.clients-marquee-wrapper::after {
+  right: 0;
+  background: linear-gradient(to left, var(--pa-bg-deep) 0%, transparent 100%);
+}
+
+/* ── MARQUEE ANIMATION ── */
+@keyframes marquee-scroll {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.clients-marquee-track {
   display: flex;
-  flex-direction: column;
-  gap: var(--space-3);
-  margin-bottom: var(--space-6);
+  align-items: center;
+  gap: 0;
+  width: max-content;
+  animation: marquee-scroll 38s linear infinite;
+  will-change: transform;
 }
 
-.clients-sector:last-child { margin-bottom: 0; }
+/* Pause on hover — premium interaction */
+.clients-marquee-wrapper:hover .clients-marquee-track {
+  animation-play-state: paused;
+}
 
-.clients-sector-label {
-  font-family: var(--font-body);
-  font-size: 11px;
-  font-weight: 600;
-  letter-spacing: 0.14em;
+/* Respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .clients-marquee-track {
+    animation: none;
+  }
+  .clients-marquee-wrapper::before,
+  .clients-marquee-wrapper::after { display: none; }
+}
+
+/* ── MARQUEE ITEM ── */
+.clients-marquee-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 var(--space-9);
+  flex-shrink: 0;
+  height: 72px;
+  position: relative;
+}
+
+/* Thin separator between items */
+.clients-marquee-item::after {
+  content: '';
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 1px;
+  height: 24px;
+  background: var(--pa-line);
+}
+
+/* ── MARQUEE TEXT ── */
+.clients-marquee-text {
+  font-family: var(--font-display);
+  font-size: 32px;
+  font-weight: 400;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: var(--pa-gold);
-  display: block;
-  padding-bottom: var(--space-3);
-  border-bottom: 1px solid var(--pa-line-moss);
+  color: var(--pa-text-muted);
+  white-space: nowrap;
+  opacity: 0.6;
+  transition: opacity var(--transition-mid), color var(--transition-mid);
 }
+
+.clients-marquee-item:hover .clients-marquee-text {
+  opacity: 1;
+  color: var(--pa-text);
+}
+
+@media (max-width: 768px) {
+  .clients-marquee-text { font-size: 22px; }
+  .clients-marquee-item { padding: 0 var(--space-7); }
+  .clients-marquee-wrapper::before,
+  .clients-marquee-wrapper::after { width: 60px; }
+}
+
 
 /* ── CLIENT LOGO GRID ── */
 .clients-logo-grid {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  gap: var(--space-10);
+  justify-content: center;
+  gap: var(--space-8) var(--space-10);
   padding: var(--space-8) 0;
 }
 
 @media (max-width: 768px) {
   .clients-logo-grid {
-    gap: var(--space-7);
-    justify-content: flex-start;
+    gap: var(--space-6) var(--space-8);
+    justify-content: center;
   }
 }
 
+.client-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 32px;
+}
+
 .client-logo {
-  height: 24px;
+  height: 28px;
   width: auto;
   max-width: 140px;
   object-fit: contain;
@@ -1032,9 +1127,27 @@ h3, .h3 {
   transition: all var(--transition-mid);
 }
 
-.client-logo:hover {
-  filter: brightness(0) invert(1) opacity(1);
-  transform: scale(1.08);
+/* Fallback Text Logo */
+.client-text-logo {
+  font-family: var(--font-body);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--pa-text-muted);
+  opacity: 0.45;
+  transition: all var(--transition-mid);
+  white-space: nowrap;
+}
+
+.client-item:hover .client-logo,
+.client-item:hover .client-text-logo {
+  opacity: 1;
+  transform: scale(1.05);
+}
+
+.client-logo.hide-logo {
+  display: none;
 }
 
 /* ── MOLECULE: KPI (Brand Book §5.4) ── */
@@ -1528,8 +1641,16 @@ body.drawer-open { overflow: hidden; }
     font-family: var(--font-body);
     font-size: 13px;
     font-weight: 500;
+        .pa-animate {
+            will-change: transform, opacity;
+            opacity: 0;
+            /* Progressive enhancement: if JS fails, we show them via no-js or a timeout */
+        }
+        
+        .js-loaded .pa-animate {
+            /* Handled by GSAP */
+        }
     white-space: nowrap;
-    opacity: 0;
     visibility: hidden;
     transition: all 0.3s ease;
     box-shadow: 0 4px 12px rgba(0,0,0,0.1);

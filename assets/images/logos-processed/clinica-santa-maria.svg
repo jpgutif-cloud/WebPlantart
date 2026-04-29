@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 200" width="500" height="200">
+  <title>Clínica Santa María</title>
+  <!-- Normalized monochrome white logo -->
+  <g fill="#FFFFFF">
+    <!-- Medical cross emblem -->
+    <rect x="52" y="70" width="14" height="60" rx="3" fill="#FFFFFF"/>
+    <rect x="38" y="84" width="42" height="14" rx="3" fill="#FFFFFF"/>
+    <!-- Wordmark -->
+    <text x="108" y="95" font-family="Arial, sans-serif" font-size="30" font-weight="700" letter-spacing="-0.5" fill="#FFFFFF">CLÍNICA</text>
+    <text x="108" y="130" font-family="Georgia, serif" font-size="32" font-weight="400" letter-spacing="1" fill="#FFFFFF">Santa María</text>
+    <rect x="108" y="145" width="300" height="1.5" fill="#FFFFFF" opacity="0.35"/>
+  </g>
+</svg>

@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 200" width="500" height="200">
+  <title>Parque Arauco Kennedy</title>
+  <!-- Normalized monochrome white logo — transparent background -->
+  <!-- Original: Logo-Parque arauco kennedy.svg — colors replaced with white -->
+  <g fill="#FFFFFF" transform="translate(60,20) scale(0.48)">
+    <!-- Circle emblem simplified -->
+    <circle cx="170" cy="100" r="95" fill="none" stroke="#FFFFFF" stroke-width="8"/>
+    <path d="M 82,100 a 88,88 0 0,1 88,-88" fill="none" stroke="#FFFFFF" stroke-width="8"/>
+    <path d="M 170,12 a 88,88 0 0,1 88,88" fill="none" stroke="#FFFFFF" stroke-width="8"/>
+    <path d="M 130,55 Q 170,30 210,55 Q 210,100 170,115 Q 130,100 130,55Z" fill="#FFFFFF" opacity="0.9"/>
+    <!-- PAK wordmark -->
+    <text x="295" y="75" font-family="Arial, sans-serif" font-size="42" font-weight="700" letter-spacing="-1" fill="#FFFFFF">Parque</text>
+    <text x="295" y="118" font-family="Arial, sans-serif" font-size="42" font-weight="700" letter-spacing="-1" fill="#FFFFFF">Arauco</text>
+    <text x="295" y="158" font-family="Arial, sans-serif" font-size="28" font-weight="400" letter-spacing="2" fill="#FFFFFF" opacity="0.7">KENNEDY</text>
+  </g>
+</svg>

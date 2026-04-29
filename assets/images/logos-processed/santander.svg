@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 200" width="500" height="200">
+  <title>Banco Santander</title>
+  <!-- Normalized monochrome white logo — flame shape + wordmark -->
+  <g fill="#FFFFFF">
+    <!-- Santander flame / leaf motif simplified -->
+    <path d="M 60,155 C 60,100 90,60 115,45 C 140,60 155,100 145,155 C 130,175 80,175 60,155 Z" fill="#FFFFFF" opacity="0.85"/>
+    <path d="M 85,155 C 85,120 100,90 115,75 C 130,90 140,120 135,155 Z" fill="#0A0D0A" opacity="0.5"/>
+    <text x="175" y="130" font-family="Arial, sans-serif" font-size="54" font-weight="700" letter-spacing="-2" fill="#FFFFFF">Santander</text>
+  </g>
+</svg>

@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 200" width="500" height="200">
+  <title>Grünenthal</title>
+  <!-- Normalized monochrome white logo -->
+  <g fill="#FFFFFF">
+    <!-- Abstract G mark -->
+    <path d="M 75,55 A 55,55 0 1,0 130,100 L 90,100" fill="none" stroke="#FFFFFF" stroke-width="10" stroke-linecap="round"/>
+    <rect x="90" y="93" width="50" height="14" rx="3" fill="#FFFFFF"/>
+    <!-- Wordmark -->
+    <text x="170" y="110" font-family="Arial, sans-serif" font-size="38" font-weight="600" letter-spacing="-0.5" fill="#FFFFFF">Grünenthal</text>
+  </g>
+</svg>

@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 200" width="500" height="200">
+  <title>IDEMIA</title>
+  <!-- Normalized monochrome white logo -->
+  <g fill="#FFFFFF">
+    <!-- Geometric mark — two overlapping arcs suggesting identity/biometric -->
+    <circle cx="75" cy="100" r="55" fill="none" stroke="#FFFFFF" stroke-width="8"/>
+    <circle cx="75" cy="100" r="30" fill="none" stroke="#FFFFFF" stroke-width="4"/>
+    <circle cx="75" cy="100" r="10" fill="#FFFFFF"/>
+    <!-- Wordmark -->
+    <text x="155" y="120" font-family="Arial, sans-serif" font-size="68" font-weight="800" letter-spacing="4" fill="#FFFFFF">IDEMIA</text>
+  </g>
+</svg>

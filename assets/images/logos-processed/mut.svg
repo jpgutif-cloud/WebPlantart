@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 200" width="500" height="200">
+  <title>MUT Tobalaba</title>
+  <!-- Normalized monochrome white logo -->
+  <g fill="#FFFFFF">
+    <text x="50" y="140" font-family="Georgia, serif" font-size="120" font-weight="700" letter-spacing="8" fill="#FFFFFF">MUT</text>
+    <text x="52" y="175" font-family="Arial, sans-serif" font-size="20" font-weight="400" letter-spacing="6" fill="#FFFFFF" opacity="0.6">MERCADO URBANO TOBALABA</text>
+  </g>
+</svg>

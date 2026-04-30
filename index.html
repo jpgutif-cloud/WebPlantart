@@ -21,7 +21,9 @@
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,400;1,500&family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,400;1,500&family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;700&display=swap"
+        rel="stylesheet">
     <link rel="icon" type="image/png" href="favicon.png">
     <link rel="apple-touch-icon" href="favicon.png">
 
@@ -35,7 +37,8 @@
         }
 
         /* 1. Custom Cursor */
-        .custom-cursor, .custom-cursor-follower {
+        .custom-cursor,
+        .custom-cursor-follower {
             position: fixed;
             top: 0;
             left: 0;
@@ -43,37 +46,47 @@
             z-index: 10000;
             border-radius: 50%;
             transform: translate(-50%, -50%);
-            transition: width 0.3s cubic-bezier(0.23, 1, 0.32, 1), 
-                        height 0.3s cubic-bezier(0.23, 1, 0.32, 1), 
-                        background 0.3s, border 0.3s;
+            transition: width 0.3s cubic-bezier(0.23, 1, 0.32, 1),
+                height 0.3s cubic-bezier(0.23, 1, 0.32, 1),
+                background 0.3s, border 0.3s;
         }
+
         .custom-cursor {
             width: 12px;
             height: 12px;
             background: #8ab870;
         }
+
         .custom-cursor-follower {
             width: 40px;
             height: 40px;
             border: 1px solid #8ab870;
             z-index: 9999;
         }
+
         .custom-cursor.active {
             width: 24px;
             height: 24px;
         }
+
         .custom-cursor-follower.active {
             width: 60px;
             height: 60px;
         }
+
         @media (max-width: 1024px) {
-            .custom-cursor, .custom-cursor-follower { display: none; }
+
+            .custom-cursor,
+            .custom-cursor-follower {
+                display: none;
+            }
         }
 
         /* 2. Navbar Sticky Animada */
         .pa-header {
             transition: all 0.4s ease;
         }
+
         .pa-header.scrolled {
             background: rgba(15, 17, 14, 0.7) !important;
             backdrop-filter: blur(20px);
@@ -99,7 +112,7 @@
             will-change: transform, opacity;
             opacity: 0;
         }
-        
+
         /* If GSAP fails to load or JS is disabled, we want elements to eventually appear */
         .no-gsap .pa-animate {
             opacity: 1 !important;
@@ -111,18 +124,28 @@
             overflow: hidden;
             display: block;
         }
+
         .pa-project-card img {
             transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1) !important;
         }
+
         .pa-project-card:hover img {
             transform: scale(1.08);
         }
 
         /* 9. Perpetual Micro-Interactions */
         @keyframes perpetualFloat {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-6px); }
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-6px);
+            }
         }
+
         .pa-kpi .number {
             display: inline-block;
             animation: perpetualFloat 4s ease-in-out infinite;
@@ -159,7 +182,9 @@
     <!-- Header -->
     <header class="pa-header" role="banner">
         <div class="pa-container">
-            <a href="index.html" class="logo" aria-label="Plant Art — Inicio">Plant Art</a>
+            <a href="index.html" class="logo" aria-label="Plant Art — Inicio">
+                <img src="assets/images/Logo Plant Art/Plantart-logo-navbar.png" alt="Plant Art">
+            </a>
 
             <nav class="pa-header-nav" aria-label="Navegación principal">
                 <a href="#projects" class="nav-link">Proyectos</a>
@@ -194,17 +219,22 @@
             <div class="hero-content-wrapper pa-container">
                 <div class="hero-content">
                     <div class="hero-trust-tag pa-animate" data-delay="50">
-                        <svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                        <svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round"
+                            stroke-linejoin="round" aria-hidden="true">
+                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
                         </svg>
                         <span>25 Años de Experiencia</span>
                         <span class="sep"></span>
                         <span>+208k m² Operados</span>
                     </div>
-                    <div class="hero-credibility-top pa-animate" data-delay="150">SANTIAGO, CHILE · ESTÁNDAR DE CONFIANZA</div>
+                    <div class="hero-credibility-top pa-animate" data-delay="150">SANTIAGO, CHILE · ESTÁNDAR DE
+                        CONFIANZA</div>
                     <span class="pa-eyebrow pa-animate" data-delay="200">INFRAESTRUCTURA BIOFÍLICA</span>
-                    <h1 class="hero-title pa-animate" data-delay="300">Infraestructura viva para el entorno construido.</h1>
-                    <p class="body-l pa-animate" data-delay="400" style="max-width: 580px; text-wrap: balance;">Diseñamos, construimos y mantenemos sistemas vegetales de alto estándar para arquitectura corporativa y retail.</p>
+                    <h1 class="hero-title pa-animate" data-delay="300">Infraestructura viva para el entorno construido.
+                    </h1>
+                    <p class="body-l pa-animate" data-delay="400" style="max-width: 580px; text-wrap: balance;">
+                        Diseñamos, construimos y mantenemos sistemas vegetales de alto estándar para arquitectura
+                        corporativa y retail.</p>
 
                     <div class="ctas pa-animate" data-delay="600">
                         <a href="#contact" class="pa-btn-primary">Solicitar propuesta</a>
@@ -224,7 +254,8 @@
                 <header class="section-header pa-editorial-spacing pa-animate">
                     <span class="pa-eyebrow">04 PROYECTOS SELECCIONADOS</span>
                     <h2 id="projects-title">Trabajo que define estándar.</h2>
-                    <p class="body-m" style="text-wrap: balance;">Intervenciones que integran diseño biofílico, técnica precisa y mantenimiento continuo en entornos de alta exigencia.</p>
+                    <p class="body-m" style="text-wrap: balance;">Intervenciones que integran diseño biofílico, técnica
+                        precisa y mantenimiento continuo en entornos de alta exigencia.</p>
                 </header>
 
                 <div class="projects-grid">
@@ -239,7 +270,7 @@
                             <span class="project-meta">Las Condes, Santiago · 18.350 m²</span>
                             <h3 class="project-name">MUT Tobalaba</h3>
                             <span class="pa-btn-text">Ver proyecto <svg viewBox="0 0 24 24" width="16" height="16"
-                                     stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round">
+                                    stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round">
                                     <line x1="5" y1="12" x2="19" y2="12" />
                                     <polyline points="12 5 19 12 12 19" />
                                 </svg></span>
@@ -314,15 +345,20 @@
                 <header class="section-header pa-editorial-spacing pa-animate">
                     <span class="pa-eyebrow">NUESTRA EXPERTISE</span>
                     <h2 id="expertise-title">Soluciones para cada escala del entorno construido.</h2>
-                    <p class="body-m" style="text-wrap: balance;">Diseñamos e implementamos soluciones biofílicas adaptadas a la arquitectura y los requerimientos operacionales.</p>
+                    <p class="body-m" style="text-wrap: balance;">Diseñamos e implementamos soluciones biofílicas
+                        adaptadas a la arquitectura y los requerimientos operacionales.</p>
                 </header>
 
                 <div class="expertise-grid asymmetric">
                     <div class="pa-service-card protagonist pa-animate" data-delay="100">
                         <span class="pa-eyebrow">01. Jardines Verticales</span>
-                        <h3 class="h1" style="font-size: clamp(32px, 5vw, 56px); margin-bottom: var(--space-4);">Sistemas vivos integrados a la arquitectura.</h3>
-                        <p class="body-l" style="max-width: 48ch;">Diseñamos e instalamos muros verdes con tecnología hidropónica avanzada (Sistema Telmadermi), operando bajo estándares LEED Platino.</p>
-                        <a href="#contact" class="pa-btn-primary expertise-cta" style="background: var(--pa-moss); color: var(--pa-text); border: none;">Solicitar propuesta técnica</a>
+                        <h3 class="h1" style="font-size: clamp(32px, 5vw, 56px); margin-bottom: var(--space-4);">
+                            Sistemas vivos integrados a la arquitectura.</h3>
+                        <p class="body-l" style="max-width: 48ch;">Diseñamos e instalamos muros verdes con tecnología
+                            hidropónica avanzada (Sistema Telmadermi), operando bajo estándares LEED Platino.</p>
+                        <a href="#contact" class="pa-btn-primary expertise-cta"
+                            style="background: var(--pa-moss); color: var(--pa-text); border: none;">Solicitar propuesta
+                            técnica</a>
                     </div>
 
                     <div class="expertise-compact-list" style="padding-top: var(--space-10);">
@@ -343,7 +379,8 @@
                             <h3>Cubiertas biológicas urbanas.</h3>
                         </div>
                         <div class="pa-service-card compact pa-animate" data-delay="350">
-                            <span class="pa-eyebrow" style="color: var(--pa-slate);">06. Mantenimiento Especializado</span>
+                            <span class="pa-eyebrow" style="color: var(--pa-slate);">06. Mantenimiento
+                                Especializado</span>
                             <h3>Operación técnica garantizada.</h3>
                         </div>
                     </div>
@@ -513,7 +550,8 @@
                             internacionalmente. Construimos infraestructura verde capaz de establecer estándares
                             globales en desarrollos arquitectónicos mixtos.
                         </p>
-                        <span class="awards-attribution">El premio ULI Americas Awards for Excellence 2025 reconoce el ciclo
+                        <span class="awards-attribution">El premio ULI Americas Awards for Excellence 2025 reconoce el
+                            ciclo
                             de vida completo de un proyecto. Plant Art es responsable del diseño, ejecución y
                             mantenimiento vivo de MUT.</span>
                     </div>
@@ -588,7 +626,7 @@
                 border-radius: var(--radius-lg);
                 overflow: hidden;
                 position: relative;
-                border: 1px solid rgba(243,240,232,0.06);
+                border: 1px solid rgba(243, 240, 232, 0.06);
             }
 
             .telmadermi-img-frame-main img {
@@ -605,7 +643,7 @@
                 border-radius: var(--radius-md);
                 overflow: hidden;
                 position: relative;
-                border: 1px solid rgba(243,240,232,0.06);
+                border: 1px solid rgba(243, 240, 232, 0.06);
             }
 
             .telmadermi-img-frame-detail img {
@@ -626,7 +664,7 @@
                 letter-spacing: 0.14em;
                 text-transform: uppercase;
                 color: var(--pa-slate);
-                background: rgba(10,13,10,0.55);
+                background: rgba(10, 13, 10, 0.55);
                 backdrop-filter: blur(8px);
                 padding: 4px 10px;
                 border-radius: 999px;
@@ -681,8 +719,8 @@
                 letter-spacing: 0.08em;
                 text-transform: uppercase;
                 color: var(--pa-text-muted);
-                background: rgba(243,240,232,0.04);
-                border: 1px solid rgba(243,240,232,0.1);
+                background: rgba(243, 240, 232, 0.04);
+                border: 1px solid rgba(243, 240, 232, 0.1);
                 border-radius: 999px;
                 padding: 8px 18px;
                 transition: border-color var(--transition-mid), color var(--transition-mid);
@@ -703,8 +741,13 @@
             }
 
             @media (max-width: 767px) {
-                .telmadermi-visual-column { margin-top: var(--space-7); }
-                .telmadermi-img-frame-main img { padding: 8px; }
+                .telmadermi-visual-column {
+                    margin-top: var(--space-7);
+                }
+
+                .telmadermi-img-frame-main img {
+                    padding: 8px;
+                }
             }
 
             .telmadermi-copy {
@@ -763,7 +806,7 @@
                 border-right: 1px solid rgba(243, 240, 232, 0.08);
             }
 
-            .telmadermi-data-cell:last-child { 
+            .telmadermi-data-cell:last-child {
                 border-right: none;
             }
 
@@ -802,9 +845,20 @@
                     grid-template-columns: repeat(2, 1fr);
                     gap: 24px 0;
                 }
-                .telmadermi-data-cell:nth-child(2) { border-right: none; }
-                .telmadermi-data-cell:nth-child(3) { border-top: 1px solid var(--pa-line); padding-top: 24px; }
-                .telmadermi-data-cell:nth-child(4) { border-top: 1px solid var(--pa-line); padding-top: 24px; }
+
+                .telmadermi-data-cell:nth-child(2) {
+                    border-right: none;
+                }
+
+                .telmadermi-data-cell:nth-child(3) {
+                    border-top: 1px solid var(--pa-line);
+                    padding-top: 24px;
+                }
+
+                .telmadermi-data-cell:nth-child(4) {
+                    border-top: 1px solid var(--pa-line);
+                    padding-top: 24px;
+                }
             }
 
             @media (max-width: 767px) {
@@ -812,19 +866,23 @@
                     height: auto;
                     padding: 80px 0;
                 }
+
                 .telmadermi-data-bar {
                     grid-template-columns: 1fr;
                     gap: 24px;
                 }
+
                 .telmadermi-data-cell {
                     border-right: none;
                     border-bottom: 1px solid var(--pa-line);
                     padding: 0 0 24px 0;
                 }
+
                 .telmadermi-data-cell:last-child {
                     border-bottom: none;
                     padding-bottom: 0;
                 }
+
                 .telmadermi-data-cell:nth-child(3),
                 .telmadermi-data-cell:nth-child(4) {
                     border-top: none;
@@ -842,9 +900,8 @@
         <section id="telmadermi" class="telmadermi-section" aria-labelledby="telmadermi-title">
             <!-- Fondo fotográfico -->
             <div class="telmadermi-bg" aria-hidden="true">
-                <img src="assets/images/mut/paisajismo-corporativo-mut-mercado-urbano-tobalaba-plantart-04.png" 
-                     alt="" 
-                     onerror="this.style.display='none'; this.parentElement.style.backgroundColor='var(--pa-surface)';" />
+                <img src="assets/images/mut/paisajismo-corporativo-mut-mercado-urbano-tobalaba-plantart-04.png" alt=""
+                    onerror="this.style.display='none'; this.parentElement.style.backgroundColor='var(--pa-surface)';" />
             </div>
 
             <!-- Contenido -->
@@ -852,13 +909,18 @@
                 <div class="telmadermi-copy pa-animate">
                     <span class="telmadermi-eyebrow">SISTEMA DE FABRICACIÓN PROPIO</span>
                     <h2 id="telmadermi-title" class="telmadermi-title">Sistema Telmadermi.</h2>
-                    <p class="telmadermi-body">Infraestructura vegetal con metodología propia, escalable a cualquier arquitectura y fabricada íntegramente con materiales 100% reciclados de Chile. Optimizamos el desempeño térmico operando en activos LEED Platino con reducción documentada de hasta −2°C en temperatura ambiente.</p>
-                    
+                    <p class="telmadermi-body">Infraestructura vegetal con metodología propia, escalable a cualquier
+                        arquitectura y fabricada íntegramente con materiales 100% reciclados de Chile. Optimizamos el
+                        desempeño térmico operando en activos LEED Platino con reducción documentada de hasta −2°C en
+                        temperatura ambiente.</p>
+
                     <!-- Barra de datos semántica -->
-                    <dl class="telmadermi-data-bar glass-refraction pa-animate" data-delay="150" aria-label="Especificaciones técnicas del Sistema Telmadermi">
+                    <dl class="telmadermi-data-bar glass-refraction pa-animate" data-delay="150"
+                        aria-label="Especificaciones técnicas del Sistema Telmadermi">
                         <div class="telmadermi-data-cell">
                             <dt class="telmadermi-data-label">Reducción de temperatura</dt>
-                            <dd class="telmadermi-data-number" style="font-family: var(--font-mono); font-size: 32px;">−2°C</dd>
+                            <dd class="telmadermi-data-number" style="font-family: var(--font-mono); font-size: 32px;">
+                                −2°C</dd>
                         </div>
                         <div class="telmadermi-data-cell">
                             <dt class="telmadermi-data-label">Módulo estándar</dt>
@@ -875,9 +937,11 @@
                     </dl>
 
                     <!-- CTA -->
-                    <a href="proyectos.html" class="pa-btn-text telmadermi-cta pa-animate" data-delay="250" aria-label="Ver proyectos con muros verdes de Plant Art">
+                    <a href="proyectos.html" class="pa-btn-text telmadermi-cta pa-animate" data-delay="250"
+                        aria-label="Ver proyectos con muros verdes de Plant Art">
                         Ver proyectos de muros verdes
-                        <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round">
+                        <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="1.5"
+                            fill="none" stroke-linecap="round">
                             <line x1="5" y1="12" x2="19" y2="12" />
                             <polyline points="12 5 19 12 12 19" />
                         </svg>
@@ -889,24 +953,16 @@
 
                     <!-- Imagen principal: render explotado sin etiquetas -->
                     <div class="telmadermi-img-frame-main">
-                        <img
-                            src="assets/images/Telmadermi/telmadermi-sistema-explotado.png"
+                        <img src="assets/images/Telmadermi/telmadermi-sistema-explotado.png"
                             alt="Vista explotada del Sistema Telmadermi: capas de hiedra natural, tela de bolsillos reciclada, sustrato nutritivo, panel PET reciclado, policarbonato alveolar y estructura omega galvanizada"
-                            width="1456"
-                            height="816"
-                            loading="lazy"
-                        />
+                            width="1456" height="816" loading="lazy" />
                     </div>
 
                     <!-- Imagen técnica: render con etiquetas de componentes -->
                     <div class="telmadermi-img-frame-detail">
-                        <img
-                            src="assets/images/Telmadermi/telmadermi-componentes-tecnicos.png"
+                        <img src="assets/images/Telmadermi/telmadermi-componentes-tecnicos.png"
                             alt="Diagrama técnico del Sistema Telmadermi con etiquetas de cada capa: hiedra natural, tela de bolsillos reciclada, sustrato nutritivo, panel base de PET reciclado, policarbonato alveolar 4 mm, omega estructural galvanizada y tornillos galvanizados"
-                            width="1456"
-                            height="816"
-                            loading="lazy"
-                        />
+                            width="1456" height="816" loading="lazy" />
                         <span class="telmadermi-detail-caption">Anatomía del sistema</span>
                     </div>
 
@@ -919,7 +975,9 @@
             <div class="pa-container telmadermi-layers-inner pa-animate">
                 <div>
                     <h3 class="telmadermi-layers-heading">Sistema constructivo en capas</h3>
-                    <p class="telmadermi-layers-subtext">Telmadermi integra vegetación natural, sustrato nutritivo, materiales reciclados y una estructura técnica de fijación en un sistema modular diseñado para proyectos de alta exigencia operacional.</p>
+                    <p class="telmadermi-layers-subtext">Telmadermi integra vegetación natural, sustrato nutritivo,
+                        materiales reciclados y una estructura técnica de fijación en un sistema modular diseñado para
+                        proyectos de alta exigencia operacional.</p>
                 </div>
                 <div class="telmadermi-layers-pills" role="list" aria-label="Componentes del sistema Telmadermi">
                     <span class="telmadermi-pill" role="listitem">Hiedra natural</span>
@@ -984,7 +1042,9 @@
                     <div class="pa-trust">
                         <span class="accent">Supervisión Interna</span>
                         <h3>Responsabilidad absoluta</h3>
-                        <p class="body-m">Operamos sin tercerizar el equipamiento crítico. Contamos con flota propia de plataformas elevadoras y personal altamente capacitado para intervenir áreas de alto flujo sin alterar la operación del activo.</p>
+                        <p class="body-m">Operamos sin tercerizar el equipamiento crítico. Contamos con flota propia de
+                            plataformas elevadoras y personal altamente capacitado para intervenir áreas de alto flujo
+                            sin alterar la operación del activo.</p>
                     </div>
                 </div>
             </div>
@@ -1115,7 +1175,9 @@
             <div class="footer-grid">
                 <!-- Col 1: Brand -->
                 <div>
-                    <div class="footer-logo">Plant Art</div>
+                    <div class="footer-logo">
+                        <img src="assets/images/Logo Plant Art/Plantart-logo-navbar.png" alt="Plant Art">
+                    </div>
                     <div class="footer-social">
                         <a href="https://instagram.com/plantart_cl" target="_blank" rel="noopener"
                             aria-label="Instagram de Plant Art">
@@ -1244,13 +1306,13 @@
             const canvas = document.getElementById('hero-particles');
             const ctx = canvas.getContext('2d');
             let particles = [];
-            
+
             function initParticles() {
                 if (!canvas) return;
                 canvas.width = window.innerWidth;
                 canvas.height = document.querySelector('.hero-section').offsetHeight;
                 particles = [];
-                for(let i=0; i<80; i++) {
+                for (let i = 0; i < 80; i++) {
                     particles.push({
                         x: Math.random() * canvas.width,
                         y: Math.random() * canvas.height,
@@ -1266,23 +1328,23 @@
                 ctx.clearRect(0, 0, canvas.width, canvas.height);
                 ctx.fillStyle = 'rgba(138, 184, 112, 0.4)';
                 ctx.strokeStyle = 'rgba(138, 184, 112, 0.15)';
-                
+
                 particles.forEach((p, i) => {
                     p.x += p.vx;
                     p.y += p.vy;
-                    if(p.x < 0) p.x = canvas.width;
-                    if(p.x > canvas.width) p.x = 0;
-                    if(p.y < 0) p.y = canvas.height;
-                    if(p.y > canvas.height) p.y = 0;
-                    
+                    if (p.x < 0) p.x = canvas.width;
+                    if (p.x > canvas.width) p.x = 0;
+                    if (p.y < 0) p.y = canvas.height;
+                    if (p.y > canvas.height) p.y = 0;
+
                     ctx.beginPath();
-                    ctx.arc(p.x, p.y, p.size, 0, Math.PI*2);
+                    ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
                     ctx.fill();
-                    
-                    for(let j=i+1; j<particles.length; j++) {
+
+                    for (let j = i + 1; j < particles.length; j++) {
                         const p2 = particles[j];
                         const dist = Math.hypot(p.x - p2.x, p.y - p2.y);
-                        if(dist < 120) {
+                        if (dist < 120) {
                             ctx.beginPath();
                             ctx.moveTo(p.x, p.y);
                             ctx.lineTo(p2.x, p2.y);
@@ -1299,16 +1361,16 @@
             /* 4. GSAP ENTRANCE HERO */
             const heroTl = gsap.timeline({ delay: 0.3 });
             heroTl.fromTo('.hero-trust-tag', { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.8, ease: 'power3.out' })
-                  .fromTo('.hero-credibility-top', { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.8, ease: 'power3.out' }, '-=0.6')
-                  .fromTo('.hero-content .pa-eyebrow', { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.8, ease: 'power3.out' }, '-=0.6')
-                  .fromTo('.hero-content .hero-title', { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: 1, ease: 'power3.out' }, '-=0.7')
-                  .fromTo('.hero-content .body-l', { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 1, ease: 'power3.out' }, '-=0.8')
-                  .fromTo('.hero-content .ctas', { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 1, ease: 'power3.out' }, '-=0.8');
+                .fromTo('.hero-credibility-top', { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.8, ease: 'power3.out' }, '-=0.6')
+                .fromTo('.hero-content .pa-eyebrow', { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.8, ease: 'power3.out' }, '-=0.6')
+                .fromTo('.hero-content .hero-title', { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: 1, ease: 'power3.out' }, '-=0.7')
+                .fromTo('.hero-content .body-l', { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 1, ease: 'power3.out' }, '-=0.8')
+                .fromTo('.hero-content .ctas', { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 1, ease: 'power3.out' }, '-=0.8');
 
             /* 5. SCROLL-TRIGGERED REVEALS */
             gsap.utils.toArray('.pa-animate').forEach(el => {
                 if (el.closest('#hero')) return;
-                
+
                 let x = 0, y = 40, scale = 1;
                 if (el.classList.contains('reveal-left')) { x = -60; y = 0; }
                 else if (el.classList.contains('reveal-right')) { x = 60; y = 0; }
@@ -1317,7 +1379,7 @@
                 const index = parseFloat(getComputedStyle(el).getPropertyValue('--index')) || 0;
                 const delay = index * 0.15;
 
-                gsap.fromTo(el, 
+                gsap.fromTo(el,
                     { opacity: 0, x: x, y: y, scale: scale },
                     {
                         opacity: 1,
@@ -1358,7 +1420,7 @@
             document.querySelectorAll('.telmadermi-data-number, .pa-kpi .number, .data-bridge-value').forEach(el => {
                 const valStr = el.innerText.replace(/[^0-9]/g, '');
                 const val = parseFloat(valStr);
-                if(!isNaN(val) && valStr !== '') countUp(el, val);
+                if (!isNaN(val) && valStr !== '') countUp(el, val);
             });
 
             /* 7. PARALLAX HERO */
@@ -1382,7 +1444,7 @@
             }, 3000);
 
             /* 7. LOGO ERROR FALLBACK */
-            window.addEventListener('error', function(e) {
+            window.addEventListener('error', function (e) {
                 if (e.target.tagName === 'IMG' && e.target.classList.contains('client-logo')) {
                     e.target.classList.add('hide-logo');
                 }
@@ -1394,8 +1456,12 @@
     <script src="main.js" defer></script>
 
     <!-- WhatsApp Floating Button -->
-    <a href="https://wa.me/56984640878?text=Hola%20Plant%20Art%2C%20vengo%20de%20su%20sitio%20web%20y%20me%20gustar%C3%ADa%20solicitar%20una%20propuesta%20t%C3%A9cnica." class="wa-float" target="_blank" rel="noopener noreferrer" aria-label="Contactar por WhatsApp">
-        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.414 0 .018 5.396.015 12.03a11.811 11.811 0 001.592 5.961L0 24l6.117-1.605a11.77 11.77 0 005.925 1.583h.005c6.637 0 12.032-5.396 12.035-12.032a11.791 11.791 0 00-3.417-8.243"/></svg>
+    <a href="https://wa.me/56984640878?text=Hola%20Plant%20Art%2C%20vengo%20de%20su%20sitio%20web%20y%20me%20gustar%C3%ADa%20solicitar%20una%20propuesta%20t%C3%A9cnica."
+        class="wa-float" target="_blank" rel="noopener noreferrer" aria-label="Contactar por WhatsApp">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path
+                d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.414 0 .018 5.396.015 12.03a11.811 11.811 0 001.592 5.961L0 24l6.117-1.605a11.77 11.77 0 005.925 1.583h.005c6.637 0 12.032-5.396 12.035-12.032a11.791 11.791 0 00-3.417-8.243" />
+        </svg>
     </a>
 
 </body>

@@ -567,9 +567,144 @@
 
             @media (min-width: 1024px) {
                 .telmadermi-inner {
-                    grid-template-columns: 5.5fr 4.5fr;
-                    align-items: center;
+                    grid-template-columns: 55fr 45fr;
+                    align-items: start;
+                    padding-top: var(--space-10);
+                    padding-bottom: var(--space-10);
                 }
+            }
+
+            /* Visual column — image stack */
+            .telmadermi-visual-column {
+                display: flex;
+                flex-direction: column;
+                gap: var(--space-4);
+                width: 100%;
+            }
+
+            /* Main image frame — light background to preserve studio render */
+            .telmadermi-img-frame-main {
+                background: #F2F1ED;
+                border-radius: var(--radius-lg);
+                overflow: hidden;
+                position: relative;
+                border: 1px solid rgba(243,240,232,0.06);
+            }
+
+            .telmadermi-img-frame-main img {
+                width: 100%;
+                height: auto;
+                display: block;
+                object-fit: contain;
+                padding: 16px;
+            }
+
+            /* Secondary labeled image frame */
+            .telmadermi-img-frame-detail {
+                background: #EDECEA;
+                border-radius: var(--radius-md);
+                overflow: hidden;
+                position: relative;
+                border: 1px solid rgba(243,240,232,0.06);
+            }
+
+            .telmadermi-img-frame-detail img {
+                width: 100%;
+                height: auto;
+                display: block;
+                object-fit: contain;
+            }
+
+            /* Detail caption */
+            .telmadermi-detail-caption {
+                position: absolute;
+                bottom: 12px;
+                left: 14px;
+                font-family: var(--font-body);
+                font-size: 10px;
+                font-weight: 500;
+                letter-spacing: 0.14em;
+                text-transform: uppercase;
+                color: var(--pa-slate);
+                background: rgba(10,13,10,0.55);
+                backdrop-filter: blur(8px);
+                padding: 4px 10px;
+                border-radius: 999px;
+            }
+
+            /* ── LAYERS STRIP ── */
+            .telmadermi-layers-strip {
+                background: var(--pa-surface);
+                border-top: 1px solid var(--pa-line);
+                padding: var(--space-9) 0;
+            }
+
+            .telmadermi-layers-inner {
+                display: flex;
+                flex-direction: column;
+                gap: var(--space-6);
+            }
+
+            .telmadermi-layers-heading {
+                font-family: var(--font-display);
+                font-size: clamp(28px, 4vw, 42px);
+                font-weight: 500;
+                font-style: italic;
+                color: var(--pa-text);
+                letter-spacing: -0.01em;
+                margin: 0;
+            }
+
+            .telmadermi-layers-subtext {
+                font-family: var(--font-body);
+                font-size: 15px;
+                line-height: 1.65;
+                color: var(--pa-text-muted);
+                max-width: 64ch;
+                margin: 0;
+            }
+
+            .telmadermi-layers-pills {
+                display: flex;
+                flex-wrap: wrap;
+                gap: var(--space-3);
+                align-items: center;
+            }
+
+            .telmadermi-pill {
+                display: inline-flex;
+                align-items: center;
+                gap: 8px;
+                font-family: var(--font-body);
+                font-size: 12px;
+                font-weight: 500;
+                letter-spacing: 0.08em;
+                text-transform: uppercase;
+                color: var(--pa-text-muted);
+                background: rgba(243,240,232,0.04);
+                border: 1px solid rgba(243,240,232,0.1);
+                border-radius: 999px;
+                padding: 8px 18px;
+                transition: border-color var(--transition-mid), color var(--transition-mid);
+            }
+
+            .telmadermi-pill:hover {
+                border-color: var(--pa-moss);
+                color: var(--pa-text);
+            }
+
+            .telmadermi-pill::before {
+                content: '';
+                width: 5px;
+                height: 5px;
+                border-radius: 50%;
+                background: var(--pa-moss);
+                flex-shrink: 0;
+            }
+
+            @media (max-width: 767px) {
+                .telmadermi-visual-column { margin-top: var(--space-7); }
+                .telmadermi-img-frame-main img { padding: 8px; }
             }
 
             .telmadermi-copy {
@@ -749,10 +884,54 @@
                     </a>
                 </div>
 
-                <!-- Espacio visual (desktop 45%) -->
-                <div class="telmadermi-visual-spacer" aria-hidden="true"></div>
+                <!-- Visual column: exploded render + labeled detail -->
+                <div class="telmadermi-visual-column pa-animate" data-delay="200">
+
+                    <!-- Imagen principal: render explotado sin etiquetas -->
+                    <div class="telmadermi-img-frame-main">
+                        <img
+                            src="assets/images/Telmadermi/telmadermi-sistema-explotado.png"
+                            alt="Vista explotada del Sistema Telmadermi: capas de hiedra natural, tela de bolsillos reciclada, sustrato nutritivo, panel PET reciclado, policarbonato alveolar y estructura omega galvanizada"
+                            width="1456"
+                            height="816"
+                            loading="lazy"
+                        />
+                    </div>
+
+                    <!-- Imagen técnica: render con etiquetas de componentes -->
+                    <div class="telmadermi-img-frame-detail">
+                        <img
+                            src="assets/images/Telmadermi/telmadermi-componentes-tecnicos.png"
+                            alt="Diagrama técnico del Sistema Telmadermi con etiquetas de cada capa: hiedra natural, tela de bolsillos reciclada, sustrato nutritivo, panel base de PET reciclado, policarbonato alveolar 4 mm, omega estructural galvanizada y tornillos galvanizados"
+                            width="1456"
+                            height="816"
+                            loading="lazy"
+                        />
+                        <span class="telmadermi-detail-caption">Anatomía del sistema</span>
+                    </div>
+
+                </div>
             </div>
         </section>
+
+        <!-- ═══ TELMADERMI: CAPAS DEL SISTEMA ═══ -->
+        <div class="telmadermi-layers-strip" role="region" aria-label="Componentes del Sistema Telmadermi">
+            <div class="pa-container telmadermi-layers-inner pa-animate">
+                <div>
+                    <h3 class="telmadermi-layers-heading">Sistema constructivo en capas</h3>
+                    <p class="telmadermi-layers-subtext">Telmadermi integra vegetación natural, sustrato nutritivo, materiales reciclados y una estructura técnica de fijación en un sistema modular diseñado para proyectos de alta exigencia operacional.</p>
+                </div>
+                <div class="telmadermi-layers-pills" role="list" aria-label="Componentes del sistema Telmadermi">
+                    <span class="telmadermi-pill" role="listitem">Hiedra natural</span>
+                    <span class="telmadermi-pill" role="listitem">Tela de bolsillos reciclada</span>
+                    <span class="telmadermi-pill" role="listitem">Sustrato nutritivo</span>
+                    <span class="telmadermi-pill" role="listitem">Panel base de PET reciclado</span>
+                    <span class="telmadermi-pill" role="listitem">Policarbonato alveolar 4 mm</span>
+                    <span class="telmadermi-pill" role="listitem">Omega estructural galvanizada</span>
+                    <span class="telmadermi-pill" role="listitem">Tornillos galvanizados</span>
+                </div>
+            </div>
+        </div>
 
         <!-- ═══ IMPACT / TRUST ═══ -->
         <section id="impact" class="pt-editorial pb-editorial bg-base" aria-label="Impacto y confianza">

@@ -1417,7 +1417,9 @@
             };
 
             document.querySelectorAll('.telmadermi-data-number, .pa-kpi .number, .data-bridge-value').forEach(el => {
-                const valStr = el.innerText.replace(/[^0-9]/g, '');
+                const originalText = el.innerText;
+                if (originalText.includes('x') || originalText.includes('×') || originalText.includes('cm') || originalText.includes('LEED')) return;
+                const valStr = originalText.replace(/[^0-9]/g, '');
                 const val = parseFloat(valStr);
                 if (!isNaN(val) && valStr !== '') countUp(el, val);
             });

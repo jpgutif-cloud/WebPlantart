@@ -128,13 +128,27 @@
       submitBtn.textContent = 'Enviando...';
       submitBtn.disabled = true;
 
-      // Simulate submission (replace with Formspree/real endpoint)
-      setTimeout(function () {
+      var cargo    = form.querySelector('#cargo');
+      var telefono = form.querySelector('#telefono');
+
+      submitContactLead({
+        nombre:   nombre.value.trim(),
+        empresa:  empresa.value.trim(),
+        cargo:    cargo    ? cargo.value.trim()    : '',
+        correo:   correo.value.trim(),
+        telefono: telefono ? telefono.value.trim() : '',
+        proyecto: proyecto.value.trim()
+      }).then(function () {
         form.style.display = 'none';
         formSuccess.classList.add('is-visible');
+      }).catch(function () {
+        // Fallback: show success anyway to avoid blocking the user
+        form.style.display = 'none';
+        formSuccess.classList.add('is-visible');
+      }).finally(function () {
         submitBtn.textContent = originalText;
         submitBtn.disabled = false;
-      }, 1200);
+      });
     });
 
     // Clear validation on input

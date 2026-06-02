@@ -184,7 +184,7 @@
         kicker: '01. Jardines Verticales',
         title: 'Sistemas vivos integrados a la arquitectura.',
         description: 'Diseñamos e instalamos muros verdes con tecnología hidropónica avanzada, integrando estructura, riego, selección botánica y mantención para proyectos de alto estándar.',
-        image: 'assets/images/muros-y-techos-verdes/muros-techos-verdes-paisajismo-corporativo-01.jpg',
+        image: 'assets/images/muros-y-techos-verdes/muros-techos-verdes-paisajismo-corporativo-01.webp',
         alt: 'Jardín vertical integrado a arquitectura corporativa Plant Art',
         points: [
           'Sistema Telmadermi y soluciones hidropónicas.',
@@ -196,7 +196,7 @@
         kicker: '02. Interiorismo Vegetal',
         title: 'Diseño botánico para espacios internos.',
         description: 'Creamos atmósferas interiores con vegetación seleccionada para luz, flujo de personas, mantenimiento y experiencia de marca en halls, oficinas, clínicas y espacios comerciales.',
-        image: 'assets/images/interiorplantas.png',
+        image: 'assets/images/interiorplantas.webp',
         alt: 'Interiorismo vegetal con macetero de plantas en oficina corporativa',
         points: [
           'Selección de especies según luz y uso del espacio.',
@@ -208,7 +208,7 @@
         kicker: '03. Paisajismo Comercial',
         title: 'Diseño y mantención a gran escala.',
         description: 'Planificamos, ejecutamos y mantenemos paisajismo para centros comerciales, desarrollos inmobiliarios y activos de alta afluencia, cuidando imagen, seguridad y continuidad operacional.',
-        image: 'assets/images/PAK/parque-arauco-kennedy-paisajismo-corporativo-01.png',
+        image: 'assets/images/PAK/parque-arauco-kennedy-paisajismo-corporativo-01.webp',
         alt: 'Paisajismo comercial de gran escala operado por Plant Art',
         points: [
           'Diseño coherente con arquitectura y recorrido del visitante.',
@@ -220,7 +220,7 @@
         kicker: '04. Riego Automatizado',
         title: 'Precisión y eficiencia hídrica.',
         description: 'Implementamos sistemas de riego sectorizados y automatizados para asegurar salud vegetal, control de consumo y operación confiable en interiores, exteriores y muros verdes.',
-        image: 'assets/images/riegoautomatizado.png',
+        image: 'assets/images/riegoautomatizado.webp',
         alt: 'Sistema de riego automatizado con red de tuberías y especies vegetales',
         points: [
           'Programación por sector, exposición y tipo de especie.',
@@ -232,7 +232,7 @@
         kicker: '05. Techos Vegetales',
         title: 'Cubiertas biológicas urbanas.',
         description: 'Desarrollamos cubiertas vegetales que aportan aislación, manejo térmico, biodiversidad urbana y valor arquitectónico en proyectos inmobiliarios y corporativos.',
-        image: 'assets/images/muros-y-techos-verdes/muros-techos-verdes-paisajismo-corporativo-02.png',
+        image: 'assets/images/muros-y-techos-verdes/muros-techos-verdes-paisajismo-corporativo-02.webp',
         alt: 'Techo vegetal y cubierta biológica urbana Plant Art',
         points: [
           'Soluciones para cubiertas extensivas e intensivas.',
@@ -244,7 +244,7 @@
         kicker: '06. Arriendo de Muros Verdes',
         title: 'Muros verdes temporales para eventos y marcas.',
         description: 'Arrendamos muros verdes modulares para eventos corporativos, ferias, lanzamientos, activaciones de marca y espacios comerciales temporales que necesitan presencia vegetal inmediata, elegante y sin obra permanente.',
-        image: 'assets/images/muros-y-techos-verdes/muros-techos-verdes-paisajismo-corporativo-01.png',
+        image: 'assets/images/muros-y-techos-verdes/muros-techos-verdes-paisajismo-corporativo-01.webp',
         alt: 'Muro verde modular para eventos y activaciones de marca Plant Art',
         points: [
           'Instalación y retiro coordinados según horario del evento.',

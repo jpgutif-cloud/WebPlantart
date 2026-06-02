@@ -184,8 +184,8 @@
         kicker: '01. Jardines Verticales',
         title: 'Sistemas vivos integrados a la arquitectura.',
         description: 'Diseñamos e instalamos muros verdes con tecnología hidropónica avanzada, integrando estructura, riego, selección botánica y mantención para proyectos de alto estándar.',
-        image: 'assets/images/muros-y-techos-verdes/muros-techos-verdes-paisajismo-corporativo-01.webp',
-        alt: 'Jardín vertical integrado a arquitectura corporativa Plant Art',
+        image: 'assets/images/starbucksmuro.jpeg',
+        alt: 'Jardín vertical exterior con vegetación integrada y operación Plant Art',
         points: [
           'Sistema Telmadermi y soluciones hidropónicas.',
           'Aporte a estrategias de certificación LEED.',
@@ -244,8 +244,8 @@
         kicker: '06. Arriendo de Muros Verdes',
         title: 'Muros verdes temporales para eventos y marcas.',
         description: 'Arrendamos muros verdes modulares para eventos corporativos, ferias, lanzamientos, activaciones de marca y espacios comerciales temporales que necesitan presencia vegetal inmediata, elegante y sin obra permanente.',
-        image: 'assets/images/muros-y-techos-verdes/muros-techos-verdes-paisajismo-corporativo-01.webp',
-        alt: 'Muro verde modular para eventos y activaciones de marca Plant Art',
+        image: 'assets/images/muros-y-techos-verdes/arriendo-muro-verde-evento.webp',
+        alt: 'Muro verde modular instalado en evento corporativo Plant Art',
         points: [
           'Instalación y retiro coordinados según horario del evento.',
           'Formato modular adaptable a backdrops, accesos y zonas de experiencia.',

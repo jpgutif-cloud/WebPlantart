@@ -25,12 +25,13 @@
 
   // ── 2. MOBILE MENU DRAWER ──
   var menuBtn     = document.querySelector('.mobile-menu-btn');
-  var drawer      = document.getElementById('mobile-drawer');
+  var drawer      = document.getElementById('mobile-drawer') || document.querySelector('.mobile-drawer');
   var overlay     = document.querySelector('.mobile-drawer-overlay');
   var closeBtn    = document.querySelector('.close-drawer-btn');
-  var drawerLinks = drawer.querySelectorAll('.nav-link');
+  var drawerLinks = drawer ? drawer.querySelectorAll('.nav-link') : [];
 
   function openDrawer() {
+    if (!drawer || !overlay || !menuBtn || !closeBtn) return;
     drawer.classList.add('is-open');
     overlay.classList.add('is-active');
     document.body.classList.add('drawer-open');
@@ -39,15 +40,16 @@
   }
 
   function closeDrawer() {
+    if (!drawer || !overlay || !menuBtn) return;
     drawer.classList.remove('is-open');
     overlay.classList.remove('is-active');
     document.body.classList.remove('drawer-open');
     menuBtn.setAttribute('aria-expanded', 'false');
   }
 
-  menuBtn.addEventListener('click', openDrawer);
-  closeBtn.addEventListener('click', closeDrawer);
-  overlay.addEventListener('click', closeDrawer);
+  if (menuBtn) menuBtn.addEventListener('click', openDrawer);
+  if (closeBtn) closeBtn.addEventListener('click', closeDrawer);
+  if (overlay) overlay.addEventListener('click', closeDrawer);
 
   drawerLinks.forEach(function (link) {
     link.addEventListener('click', closeDrawer);
@@ -55,7 +57,7 @@
 
   // Close on Escape key
   document.addEventListener('keydown', function (e) {
-    if (e.key === 'Escape' && drawer.classList.contains('is-open')) {
+    if (e.key === 'Escape' && drawer && drawer.classList.contains('is-open')) {
       closeDrawer();
     }
   });
@@ -161,6 +163,135 @@
           e.preventDefault();
           cardOverlay.style.opacity = '1';
         }
+      });
+    });
+  }
+
+  // ── 7. SERVICE SELECTOR ──
+  var serviceSelector = document.querySelector('[data-service-selector]');
+
+  if (serviceSelector) {
+    var featuredCard = serviceSelector.querySelector('.pa-service-card.protagonist');
+    var kicker = serviceSelector.querySelector('[data-service-kicker]');
+    var title = serviceSelector.querySelector('[data-service-title]');
+    var description = serviceSelector.querySelector('[data-service-description]');
+    var pointsList = serviceSelector.querySelector('[data-service-points]');
+    var image = serviceSelector.querySelector('[data-service-image]');
+    var buttons = serviceSelector.querySelectorAll('[data-service-button]');
+
+    var services = [
+      {
+        kicker: '01. Jardines Verticales',
+        title: 'Sistemas vivos integrados a la arquitectura.',
+        description: 'Diseñamos e instalamos muros verdes con tecnología hidropónica avanzada, integrando estructura, riego, selección botánica y mantención para proyectos de alto estándar.',
+        image: 'assets/images/muros-y-techos-verdes/muros-techos-verdes-paisajismo-corporativo-01.jpg',
+        alt: 'Jardín vertical integrado a arquitectura corporativa Plant Art',
+        points: [
+          'Sistema Telmadermi y soluciones hidropónicas.',
+          'Aporte a estrategias de certificación LEED.',
+          'Mantención especializada para operación continua.'
+        ]
+      },
+      {
+        kicker: '02. Interiorismo Vegetal',
+        title: 'Diseño botánico para espacios internos.',
+        description: 'Creamos atmósferas interiores con vegetación seleccionada para luz, flujo de personas, mantenimiento y experiencia de marca en halls, oficinas, clínicas y espacios comerciales.',
+        image: 'assets/images/interiorplantas.png',
+        alt: 'Interiorismo vegetal con macetero de plantas en oficina corporativa',
+        points: [
+          'Selección de especies según luz y uso del espacio.',
+          'Maceteros, jardineras y composiciones a medida.',
+          'Mantención discreta para espacios en operación.'
+        ]
+      },
+      {
+        kicker: '03. Paisajismo Comercial',
+        title: 'Diseño y mantención a gran escala.',
+        description: 'Planificamos, ejecutamos y mantenemos paisajismo para centros comerciales, desarrollos inmobiliarios y activos de alta afluencia, cuidando imagen, seguridad y continuidad operacional.',
+        image: 'assets/images/PAK/parque-arauco-kennedy-paisajismo-corporativo-01.png',
+        alt: 'Paisajismo comercial de gran escala operado por Plant Art',
+        points: [
+          'Diseño coherente con arquitectura y recorrido del visitante.',
+          'Operación programada para temporadas y eventos.',
+          'Supervisión técnica y respuesta ante contingencias.'
+        ]
+      },
+      {
+        kicker: '04. Riego Automatizado',
+        title: 'Precisión y eficiencia hídrica.',
+        description: 'Implementamos sistemas de riego sectorizados y automatizados para asegurar salud vegetal, control de consumo y operación confiable en interiores, exteriores y muros verdes.',
+        image: 'assets/images/riegoautomatizado.png',
+        alt: 'Sistema de riego automatizado con red de tuberías y especies vegetales',
+        points: [
+          'Programación por sector, exposición y tipo de especie.',
+          'Optimización de consumo hídrico y reposiciones.',
+          'Revisión técnica preventiva del sistema.'
+        ]
+      },
+      {
+        kicker: '05. Techos Vegetales',
+        title: 'Cubiertas biológicas urbanas.',
+        description: 'Desarrollamos cubiertas vegetales que aportan aislación, manejo térmico, biodiversidad urbana y valor arquitectónico en proyectos inmobiliarios y corporativos.',
+        image: 'assets/images/muros-y-techos-verdes/muros-techos-verdes-paisajismo-corporativo-02.png',
+        alt: 'Techo vegetal y cubierta biológica urbana Plant Art',
+        points: [
+          'Soluciones para cubiertas extensivas e intensivas.',
+          'Sustratos, drenaje y especies según carga y exposición.',
+          'Mantención para estabilidad vegetal de largo plazo.'
+        ]
+      },
+      {
+        kicker: '06. Arriendo de Muros Verdes',
+        title: 'Muros verdes temporales para eventos y marcas.',
+        description: 'Arrendamos muros verdes modulares para eventos corporativos, ferias, lanzamientos, activaciones de marca y espacios comerciales temporales que necesitan presencia vegetal inmediata, elegante y sin obra permanente.',
+        image: 'assets/images/muros-y-techos-verdes/muros-techos-verdes-paisajismo-corporativo-01.png',
+        alt: 'Muro verde modular para eventos y activaciones de marca Plant Art',
+        points: [
+          'Instalación y retiro coordinados según horario del evento.',
+          'Formato modular adaptable a backdrops, accesos y zonas de experiencia.',
+          'Solución visual premium sin intervenir la infraestructura del recinto.'
+        ]
+      }
+    ];
+
+    function renderService(index, shouldScroll) {
+      var service = services[index];
+      if (!service) return;
+
+      featuredCard.classList.add('is-updating');
+
+      window.setTimeout(function () {
+        kicker.textContent = service.kicker;
+        title.textContent = service.title;
+        description.textContent = service.description;
+        image.src = service.image;
+        image.alt = service.alt;
+
+        pointsList.innerHTML = '';
+        service.points.forEach(function (point) {
+          var item = document.createElement('li');
+          item.textContent = point;
+          pointsList.appendChild(item);
+        });
+
+        buttons.forEach(function (button) {
+          var isActive = button.getAttribute('data-service-index') === String(index);
+          button.classList.toggle('is-active', isActive);
+          button.setAttribute('aria-pressed', isActive ? 'true' : 'false');
+        });
+
+        featuredCard.classList.remove('is-updating');
+
+        if (shouldScroll && window.matchMedia('(max-width: 767px)').matches) {
+          var top = featuredCard.getBoundingClientRect().top + window.pageYOffset - getHeaderHeight() - 16;
+          window.scrollTo({ top: top, behavior: 'smooth' });
+        }
+      }, 140);
+    }
+
+    buttons.forEach(function (button) {
+      button.addEventListener('click', function () {
+        renderService(Number(button.getAttribute('data-service-index')), true);
       });
     });
   }

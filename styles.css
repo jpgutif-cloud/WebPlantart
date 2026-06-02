@@ -688,41 +688,6 @@ h3, .h3 {
   .data-bridge-value { font-size: 20px; }
 }
 
-/* Scroll cue text and line */
-.scroll-cue {
-  position: absolute;
-  bottom: var(--space-6);
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 2;
-  color: var(--pa-text-muted);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  animation: gentleFloatText 2.4s ease-in-out infinite;
-}
-.scroll-text-cue {
-  font-family: var(--font-body);
-  font-size: 11px;
-  font-weight: 600;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  writing-mode: vertical-rl;
-  text-orientation: mixed;
-  margin-bottom: var(--space-3);
-}
-.scroll-line-cue {
-  width: 1px;
-  height: 48px;
-  background: var(--pa-text-muted);
-  margin: 0 auto;
-}
-
-@keyframes gentleFloatText {
-  0%, 100% { transform: translateX(-50%) translateY(0); opacity: 0.7; }
-  50%      { transform: translateX(-50%) translateY(4px); opacity: 1; }
-}
-
 /* ── MOLECULE: PROJECT CARD (Brand Book §6 — 60/40 grid) ── */
 .projects-grid {
   display: grid;
@@ -783,6 +748,68 @@ h3, .h3 {
 /* Always visible on mobile */
 @media (max-width: 767px) {
   .project-card-overlay { opacity: 1; }
+}
+
+/* ── MOBILE CAROUSEL: Projects ── */
+@media (max-width: 767px) {
+  .projects-grid {
+    display: flex;
+    flex-direction: row;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior-x: contain;
+    gap: 12px;
+    /* Bleed past container so cards reach screen edges */
+    margin-left: calc(-1 * var(--padding-mobile));
+    margin-right: calc(-1 * var(--padding-mobile));
+    padding-left: var(--padding-mobile);
+    padding-right: var(--padding-mobile);
+    padding-bottom: 4px;
+    scrollbar-width: none;
+  }
+
+  .projects-grid::-webkit-scrollbar { display: none; }
+
+  /* Flatten the stacked column wrapper */
+  .projects-col-stacked { display: contents; }
+
+  /* Each card = one carousel slide */
+  .pa-project-card,
+  .pa-project-card.large {
+    flex: 0 0 calc(100vw - 56px);
+    max-width: 340px;
+    scroll-snap-align: start;
+    aspect-ratio: 3 / 4;
+  }
+}
+
+/* Dots indicator */
+.projects-dots {
+  display: none;
+  justify-content: center;
+  align-items: center;
+  gap: 6px;
+  margin-top: var(--space-5);
+}
+
+@media (max-width: 767px) {
+  .projects-dots { display: flex; }
+}
+
+.projects-dots span {
+  display: block;
+  height: 6px;
+  width: 6px;
+  border-radius: var(--radius-pill);
+  background: rgba(243, 240, 232, 0.18);
+  transition: width 280ms cubic-bezier(0.16, 1, 0.3, 1),
+              background 280ms ease;
+}
+
+.projects-dots span.active {
+  width: 22px;
+  background: var(--pa-moss);
 }
 
 /* Caption: Inter 500, 11px, uppercase */
@@ -1421,7 +1448,7 @@ h3, .h3 {
 
 @media (min-width: 1024px) { .about-image { height: 100%; min-height: 480px; } }
 
-/* Fallback state when about.png fails to load */
+/* Fallback state when about.jpg fails to load */
 .about-image-wrapper.about-image--fallback {
   background: var(--pa-surface);
   border-radius: var(--radius-lg);

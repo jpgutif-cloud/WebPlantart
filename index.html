@@ -244,10 +244,6 @@
                     </div>
                 </div>
             </div>
-            <div class="scroll-cue" aria-hidden="true">
-                <span class="scroll-text-cue">Scroll</span>
-                <div class="scroll-line-cue"></div>
-            </div>
         </section>
 
         <!-- ═══ PROJECTS ═══ -->
@@ -333,6 +329,13 @@
                             </div>
                         </a>
                     </div>
+                </div>
+
+                <div class="projects-dots" aria-hidden="true">
+                    <span class="active"></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
                 </div>
 
                 <div class="projects-cta pa-animate" data-delay="200">
@@ -1087,7 +1090,7 @@
                     </div>
                 </div>
                 <div class="about-image-wrapper pa-animate" data-delay="200">
-                    <img src="assets/images/about.png" alt="Proyecto de paisajismo interior Plant Art"
+                    <img src="assets/images/about.jpg" alt="Muro verde vertical de Plant Art en fachada corporativa de Banco Santander"
                         class="about-image" loading="lazy"
                         onerror="this.onerror=null; this.style.display='none'; this.parentElement.classList.add('about-image--fallback');">
                     <div class="about-image-fallback-content" aria-hidden="true">
@@ -1473,6 +1476,24 @@
                 }
             }, true);
         });
+    </script>
+
+    <!-- Projects carousel dots sync -->
+    <script>
+      (function () {
+        var grid = document.querySelector('.projects-grid');
+        var dots = document.querySelectorAll('.projects-dots span');
+        if (!grid || !dots.length) return;
+        var cards = grid.querySelectorAll('.pa-project-card');
+        function updateDots() {
+          if (!cards.length) return;
+          var cardWidth = cards[0].offsetWidth + 12; // 12px gap
+          var idx = Math.min(Math.round(grid.scrollLeft / cardWidth), dots.length - 1);
+          dots.forEach(function (d, i) { d.classList.toggle('active', i === idx); });
+        }
+        grid.addEventListener('scroll', updateDots, { passive: true });
+        updateDots();
+      })();
     </script>
 
     <!-- Main JS (deferred) -->

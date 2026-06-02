@@ -220,25 +220,11 @@
             </div>
             <div class="hero-content-wrapper pa-container">
                 <div class="hero-content">
-                    <div class="hero-trust-tag pa-animate" data-delay="50">
-                        <svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round"
-                            stroke-linejoin="round" aria-hidden="true">
-                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
-                        </svg>
-                        <span>25 Años de Experiencia</span>
-                        <span class="sep"></span>
-                        <span>+208k m² Operados</span>
-                    </div>
-                    <div class="hero-credibility-top pa-animate" data-delay="150">SANTIAGO, CHILE · ESTÁNDAR DE
-                        CONFIANZA</div>
-                    <span class="pa-eyebrow pa-animate" data-delay="200">INFRAESTRUCTURA BIOFÍLICA</span>
-                    <h1 class="hero-title pa-animate" data-delay="300">Infraestructura viva para el entorno construido.
-                    </h1>
-                    <p class="body-l pa-animate" data-delay="400" style="max-width: 580px; text-wrap: balance;">
-                        Diseñamos, construimos y mantenemos sistemas vegetales de alto estándar para arquitectura
-                        corporativa y retail.</p>
+                    <h1 class="hero-title pa-animate" data-delay="100">Jardines y muros vegetales para espacios corporativos.</h1>
+                    <p class="body-l pa-animate" data-delay="250" style="max-width: 540px; text-wrap: balance;">
+                        Diseñamos, instalamos y mantenemos sistemas vegetales de alto estándar en Santiago.</p>
 
-                    <div class="ctas pa-animate" data-delay="600">
+                    <div class="ctas pa-animate" data-delay="420">
                         <a href="#contact" class="pa-btn-primary">Solicitar propuesta</a>
                         <a href="#projects" class="pa-btn-secondary">Ver proyectos</a>
                     </div>
@@ -1564,13 +1550,10 @@
             window.addEventListener('resize', initParticles);
 
             /* 4. GSAP ENTRANCE HERO */
-            const heroTl = gsap.timeline({ delay: 0.3 });
-            heroTl.fromTo('.hero-trust-tag', { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.8, ease: 'power3.out' })
-                .fromTo('.hero-credibility-top', { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.8, ease: 'power3.out' }, '-=0.6')
-                .fromTo('.hero-content .pa-eyebrow', { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.8, ease: 'power3.out' }, '-=0.6')
-                .fromTo('.hero-content .hero-title', { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: 1, ease: 'power3.out' }, '-=0.7')
-                .fromTo('.hero-content .body-l', { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 1, ease: 'power3.out' }, '-=0.8')
-                .fromTo('.hero-content .ctas', { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 1, ease: 'power3.out' }, '-=0.8');
+            const heroTl = gsap.timeline({ delay: 0.15 });
+            heroTl.fromTo('.hero-content .hero-title', { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: 1, ease: 'power3.out' })
+                .fromTo('.hero-content .body-l', { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 1, ease: 'power3.out' }, '-=0.7')
+                .fromTo('.hero-content .ctas', { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 1, ease: 'power3.out' }, '-=0.7');
 
             /* 5. SCROLL-TRIGGERED REVEALS */
             gsap.utils.toArray('.pa-animate').forEach(el => {

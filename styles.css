@@ -535,36 +535,45 @@ h3, .h3 {
   object-fit: cover;
 }
 
-/* Overlay: Brand Book exact gradient */
+/* Overlay: vertical base + horizontal darkening on right for text readability */
 .hero-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(
-    to bottom,
-    rgba(10,13,10,0.15) 0%,
-    rgba(10,13,10,0.42) 50%,
-    rgba(10,13,10,0.72) 100%
-  );
+  background:
+    linear-gradient(to left, rgba(10,13,10,0.72) 0%, rgba(10,13,10,0.28) 52%, transparent 100%),
+    linear-gradient(to bottom, rgba(10,13,10,0.10) 0%, rgba(10,13,10,0.38) 50%, rgba(10,13,10,0.65) 100%);
 }
 
 .hero-content-wrapper {
   position: relative;
   z-index: 2;
   padding-top: 140px;
-  padding-bottom: 80px; 
+  padding-bottom: 80px;
   min-height: 100dvh;
   display: flex;
   align-items: center;
+  justify-content: flex-end;
   width: 100%;
 }
 
 .hero-content {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  align-items: flex-end;
+  text-align: right;
   gap: var(--space-6);
-  max-width: 860px;
-  padding-left: 4vw;
+  max-width: 620px;
+}
+
+@media (max-width: 767px) {
+  .hero-content-wrapper {
+    justify-content: flex-start;
+  }
+  .hero-content {
+    align-items: flex-start;
+    text-align: left;
+    max-width: 100%;
+  }
 }
 
 /* H1 Hero: Brand Book exact — clamp(42px, 7vw, 96px) */

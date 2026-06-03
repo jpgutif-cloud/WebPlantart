@@ -1092,6 +1092,18 @@
   display: block;
 }
 
+.narrative-split__image--portrait {
+  aspect-ratio: 806 / 1195;
+  max-width: min(100%, 440px);
+  justify-self: center;
+  background: var(--pa-surface);
+}
+
+.narrative-split__image--portrait img {
+  object-fit: contain;
+  object-position: center;
+}
+
 /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
    KPI GRID — Métricas diferenciadas
    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */

@@ -96,15 +96,19 @@
   var form        = document.getElementById('contactForm');
   var formSuccess = document.getElementById('formSuccess');
 
+  if (form && formSuccess && new URLSearchParams(window.location.search).get('contacto') === 'enviado') {
+    form.style.display = 'none';
+    formSuccess.classList.add('is-visible');
+  }
+
   if (form) {
     form.addEventListener('submit', function (e) {
-      e.preventDefault();
-
       // Validate required fields
       var nombre   = form.querySelector('#nombre');
       var empresa  = form.querySelector('#empresa');
       var correo   = form.querySelector('#correo');
       var proyecto = form.querySelector('#proyecto');
+      var replyTo  = form.querySelector('#formReplyTo');
       var isValid  = true;
 
       [nombre, empresa, correo, proyecto].forEach(function (field) {
@@ -122,21 +126,15 @@
         isValid = false;
       }
 
-      if (!isValid) return;
+      if (!isValid) {
+        e.preventDefault();
+        return;
+      }
 
-      // Show loading state
       var submitBtn = form.querySelector('button[type="submit"]');
-      var originalText = submitBtn.textContent;
       submitBtn.textContent = 'Enviando...';
       submitBtn.disabled = true;
-
-      // Simulate submission (replace with Formspree/real endpoint)
-      setTimeout(function () {
-        form.style.display = 'none';
-        formSuccess.classList.add('is-visible');
-        submitBtn.textContent = originalText;
-        submitBtn.disabled = false;
-      }, 1200);
+      if (replyTo) replyTo.value = correo.value.trim();
     });
 
     // Clear validation on input

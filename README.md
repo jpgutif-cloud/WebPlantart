@@ -47,7 +47,7 @@ npx serve .
 | Imágenes Unsplash (4) | Hero, Projects ×3, About | Reemplazar con fotografía propia (`data-placeholder="true"`) |
 | Logos de clientes | Sección Clients | Reemplazar texto con SVG/PNG monocromos autorizados |
 | Año fundación oficial | No publicado actualmente | Confirmar con Gerencia |
-| Formulario `action` | `<form id="contactForm">` | Conectar a Formspree o backend real |
+| Formulario `action` | `<form id="contactForm">` | Envía solicitudes a contacto@plantart.cl vía FormSubmit |
 
 ### Cómo buscar placeholders en el código
 ```bash
@@ -94,7 +94,7 @@ grep -n 'href="#"' index.html
 - [x] Mobile-first: funcional en 375px
 - [x] Header sticky con blur/glass al scroll
 - [x] Drawer mobile con overlay y cierre por Escape
-- [x] Formulario con validación visual + mensaje de éxito
+- [x] Formulario con validación visual + envío por email
 - [x] Scroll suave con offset de header
 - [x] IntersectionObserver con fallback
 - [x] Accesibilidad: aria-labels, roles, heading hierarchy, focus-visible

@@ -1308,7 +1308,12 @@
                 </div>
 
                 <div class="contact-form-wrapper pa-animate" data-delay="200">
-                    <form id="contactForm" class="form-grid" novalidate>
+                    <form id="contactForm" class="form-grid" action="https://formsubmit.co/contacto@plantart.cl" method="POST" novalidate>
+                        <input type="hidden" name="_subject" value="Nueva solicitud desde Plant Art">
+                        <input type="hidden" name="_template" value="table">
+                        <input type="hidden" name="_captcha" value="false">
+                        <input type="hidden" name="_next" value="https://www.plantart.cl/index.html?contacto=enviado#contact">
+                        <input type="hidden" name="_replyto" id="formReplyTo" value="">
                         <div class="form-row-2">
                             <div class="form-group">
                                 <label class="pa-label" for="nombre">Nombre *</label>

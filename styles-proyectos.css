@@ -130,6 +130,15 @@
   background: var(--pa-line);
 }
 
+.portfolio-context {
+  max-width: 640px;
+  margin: calc(-1 * var(--space-6)) 0 var(--space-8);
+  color: var(--pa-text-muted);
+  font-family: var(--font-body);
+  font-size: 15px;
+  line-height: 1.65;
+}
+
 /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
    PROYECTO INSIGNIA — Layout editorial 60/40
    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
@@ -145,6 +154,10 @@
 
 .flagship-project:hover {
   box-shadow: 0 8px 64px rgba(0,0,0,0.28);
+}
+
+.flagship-project.is-hidden {
+  display: none;
 }
 
 @media (min-width: 1024px) {
@@ -343,6 +356,20 @@
 
 .cta-arrow:hover { gap: var(--space-5); color: var(--pa-text); }
 
+.cta-arrow.is-disabled {
+  color: var(--pa-slate);
+  cursor: default;
+  opacity: 0.78;
+}
+
+.cta-arrow.is-disabled:hover {
+  gap: var(--space-3);
+}
+
+.cta-arrow.is-disabled:hover svg {
+  transform: none;
+}
+
 .cta-arrow svg {
   transition: transform var(--transition-fast);
   flex-shrink: 0;
@@ -389,6 +416,31 @@
   display: none;
 }
 
+.filter-empty-state {
+  margin-top: var(--space-6);
+  border: 1px solid rgba(181,150,91,0.28);
+  border-radius: var(--radius-lg);
+  background: rgba(181,150,91,0.06);
+  padding: var(--space-6);
+  color: var(--pa-text-muted);
+}
+
+.filter-empty-state[hidden] {
+  display: none;
+}
+
+.filter-empty-state h3 {
+  margin-bottom: var(--space-2);
+  color: var(--pa-text);
+  font-size: 18px;
+}
+
+.filter-empty-state p {
+  font-family: var(--font-body);
+  font-size: 14px;
+  line-height: 1.6;
+}
+
 .op-card-industry {
   font-family: var(--font-body);
   font-size: 10px;
@@ -432,6 +484,26 @@
   font-weight: 500;
   letter-spacing: 0.10em;
   color: var(--pa-slate);
+}
+
+.status-badge {
+  display: inline-flex;
+  align-items: center;
+  width: fit-content;
+  border-radius: var(--radius-pill);
+  padding: 6px 12px;
+  font-family: var(--font-body);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.status-badge--restricted {
+  border: 1px solid rgba(181,150,91,0.28);
+  background: rgba(181,150,91,0.08);
+  color: var(--pa-gold);
 }
 
 /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -842,6 +914,17 @@
 }
 
 .related-card:hover { background: #1e2b1e; }
+
+.related-card--disabled {
+  background: rgba(27,34,27,0.58);
+  border-style: dashed;
+  color: var(--pa-slate);
+  cursor: default;
+}
+
+.related-card--disabled:hover {
+  background: rgba(27,34,27,0.58);
+}
 
 .related-industry {
   font-family: var(--font-body);
@@ -1276,6 +1359,36 @@
   opacity: 0.25;
   cursor: not-allowed;
   pointer-events: none;
+}
+
+.filter-pill:focus-visible,
+.cta-arrow:focus-visible,
+.carousel-btn:focus-visible,
+.back-to-top:focus-visible,
+.related-card:focus-visible {
+  outline: 2px solid var(--pa-gold);
+  outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pa-reveal,
+  .pa-reveal-scale,
+  .flagship-project,
+  .fp-image img,
+  .op-card,
+  .carousel-track,
+  .carousel-item img,
+  .mobile-drawer {
+    scroll-behavior: auto !important;
+    transition-duration: 0.001ms !important;
+    animation-duration: 0.001ms !important;
+  }
+
+  .pa-reveal,
+  .pa-reveal-scale {
+    opacity: 1;
+    transform: none;
+  }
 }
 
 /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━

@@ -166,7 +166,7 @@
     <div class="mobile-drawer-overlay" aria-hidden="true"></div>
 
     <!-- Mobile Drawer -->
-    <nav class="mobile-drawer" aria-label="Menú móvil" role="dialog" aria-modal="true">
+    <nav id="mobile-drawer" class="mobile-drawer" aria-label="Menú móvil" role="dialog" aria-modal="true" aria-hidden="true" inert>
         <button class="close-drawer-btn" aria-label="Cerrar menú">
             <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="1.5" fill="none"
                 stroke-linecap="round">
@@ -196,7 +196,7 @@
                 <a href="#contact" class="pa-btn-primary compact">Solicitar propuesta</a>
             </nav>
 
-            <button class="mobile-menu-btn" aria-label="Abrir menú" aria-expanded="false">
+            <button class="mobile-menu-btn" aria-label="Abrir menú" aria-expanded="false" aria-controls="mobile-drawer">
                 <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="1.5" fill="none"
                     stroke-linecap="round">
                     <line x1="4" y1="6" x2="20" y2="6" />
@@ -339,6 +339,15 @@
                     <p class="body-m" style="text-wrap: balance;">Diseñamos e implementamos soluciones biofílicas
                         adaptadas a la arquitectura y los requerimientos operacionales.</p>
                 </header>
+
+                <div class="service-anchor-list" aria-hidden="true">
+                    <span id="jardines-verticales" class="service-anchor"></span>
+                    <span id="interiorismo-vegetal" class="service-anchor"></span>
+                    <span id="paisajismo-comercial" class="service-anchor"></span>
+                    <span id="riego-automatizado" class="service-anchor"></span>
+                    <span id="techos-vegetales" class="service-anchor"></span>
+                    <span id="arriendo-muros-verdes" class="service-anchor"></span>
+                </div>
 
                 <div class="expertise-grid asymmetric" data-service-selector>
                     <article class="pa-service-card protagonist pa-animate" data-delay="100" aria-live="polite">
@@ -1318,12 +1327,14 @@
                             <div class="form-group">
                                 <label class="pa-label" for="nombre">Nombre *</label>
                                 <input type="text" id="nombre" name="nombre" class="pa-input"
-                                    placeholder="Nombre y apellido" required autocomplete="name">
+                                    placeholder="Nombre y apellido" required autocomplete="name" aria-describedby="nombre-error">
+                                <p class="field-error" id="nombre-error" aria-live="polite"></p>
                             </div>
                             <div class="form-group">
                                 <label class="pa-label" for="empresa">Empresa *</label>
                                 <input type="text" id="empresa" name="empresa" class="pa-input"
-                                    placeholder="Empresa / Institución" required autocomplete="organization">
+                                    placeholder="Empresa / Institución" required autocomplete="organization" aria-describedby="empresa-error">
+                                <p class="field-error" id="empresa-error" aria-live="polite"></p>
                             </div>
                         </div>
                         <div class="form-row-2">
@@ -1335,7 +1346,8 @@
                             <div class="form-group">
                                 <label class="pa-label" for="correo">Correo corporativo *</label>
                                 <input type="email" id="correo" name="correo" class="pa-input"
-                                    placeholder="correo@empresa.com" required autocomplete="email">
+                                    placeholder="correo@empresa.com" required autocomplete="email" aria-describedby="correo-error">
+                                <p class="field-error" id="correo-error" aria-live="polite"></p>
                             </div>
                         </div>
                         <div class="form-group">
@@ -1346,14 +1358,15 @@
                         <div class="form-group">
                             <label class="pa-label" for="proyecto">Descripción del proyecto *</label>
                             <textarea id="proyecto" name="proyecto" class="pa-textarea"
-                                placeholder="Describa brevemente el tipo de espacio, alcance y requerimiento"
-                                required></textarea>
+                                placeholder="Describe brevemente el tipo de espacio, alcance y requerimiento"
+                                required aria-describedby="proyecto-error"></textarea>
+                            <p class="field-error" id="proyecto-error" aria-live="polite"></p>
                         </div>
                         <button type="submit" class="pa-btn-primary w-full">Solicitar contacto ejecutivo</button>
                     </form>
                     <div id="formSuccess" class="form-success-message" role="alert">
-                        Gracias por contactarnos.<br>Un especialista revisará su solicitud y responderá en las próximas
-                        24 horas hábiles.
+                        Gracias. Recibimos tu solicitud.<br>Un especialista de Plant Art la revisará y te contactará
+                        dentro de 24 horas hábiles.
                     </div>
                 </div>
             </div>
@@ -1420,11 +1433,11 @@
                     <h4 class="footer-col-title">Servicios</h4>
                     <div class="footer-links">
                         <a href="muros-verdes.html">Jardines Verticales</a>
-                        <a href="#expertise">Interiorismo Vegetal</a>
-                        <a href="#expertise">Paisajismo Comercial</a>
-                        <a href="#expertise">Riego Automatizado</a>
-                        <a href="#expertise">Techos Vegetales</a>
-                        <a href="#expertise">Arriendo de Muros Verdes</a>
+                        <a href="#interiorismo-vegetal">Interiorismo Vegetal</a>
+                        <a href="#paisajismo-comercial">Paisajismo Comercial</a>
+                        <a href="#riego-automatizado">Riego Automatizado</a>
+                        <a href="#techos-vegetales">Techos Vegetales</a>
+                        <a href="#arriendo-muros-verdes">Arriendo de Muros Verdes</a>
                     </div>
                 </div>
 
@@ -1459,6 +1472,21 @@
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             gsap.registerPlugin(ScrollTrigger);
+            const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+            if (reduceMotion) {
+                document.body.classList.add('no-gsap');
+                document.querySelectorAll('.pa-animate').forEach(el => {
+                    el.style.opacity = '1';
+                    el.style.transform = 'none';
+                });
+                const reducedHeader = document.querySelector('.pa-header');
+                window.addEventListener('scroll', () => {
+                    if (window.scrollY > 60) reducedHeader.classList.add('scrolled');
+                    else reducedHeader.classList.remove('scrolled');
+                });
+                return;
+            }
 
             /* 1. CURSOR PERSONALIZADO */
             const cursor = document.querySelector('.custom-cursor');

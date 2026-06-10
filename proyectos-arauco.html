@@ -66,7 +66,7 @@
   </header>
 
   <div class="mobile-drawer-overlay"></div>
-  <div id="mobile-drawer" class="mobile-drawer" role="dialog" aria-modal="true" aria-label="Menú de navegación">
+  <div id="mobile-drawer" class="mobile-drawer" role="dialog" aria-modal="true" aria-label="Menú de navegación" aria-hidden="true" inert>
     <button class="close-drawer-btn" aria-label="Cerrar menú">
       <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="1.5" fill="none"
         stroke-linecap="round" aria-hidden="true">
@@ -353,11 +353,11 @@
             <span class="related-name">MUT Tobalaba</span>
             <p class="related-desc">Activo LEED Platino. Diseño y ejecución desde 2023.</p>
           </a>
-          <a href="javascript:void(0)" class="related-card" style="opacity:0.6;cursor:default;" aria-label="Caso Clínica Santa María — Próximamente">
+          <div class="related-card related-card--disabled" role="note" aria-label="Caso Clínica Santa María pendiente de autorización">
             <span class="related-industry">Salud</span>
             <span class="related-name">Clínica Santa María</span>
-            <p class="related-desc">Próximamente: Infraestructura verde para entornos de salud.</p>
-          </a>
+            <p class="related-desc">Caso pendiente de autorización. Solicita referencias similares para entornos de salud.</p>
+          </div>
           <a href="proyectos.html" class="related-card" aria-label="Ver portafolio completo">
             <span class="related-industry">Portafolio</span>
             <span class="related-name">Ver todos los proyectos →</span>

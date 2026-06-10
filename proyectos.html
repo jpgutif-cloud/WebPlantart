@@ -93,7 +93,7 @@
 
   <!-- Mobile Drawer -->
   <div class="mobile-drawer-overlay"></div>
-  <div id="mobile-drawer" class="mobile-drawer" role="dialog" aria-modal="true" aria-label="Menú de navegación móvil">
+  <div id="mobile-drawer" class="mobile-drawer" role="dialog" aria-modal="true" aria-label="Menú de navegación móvil" aria-hidden="true" inert>
     <button class="close-drawer-btn" aria-label="Cerrar menú">
       <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" aria-hidden="true">
         <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
@@ -155,7 +155,7 @@
         </div>
 
         <!-- ─── INSIGNIA 1: MUT — imagen izquierda, contenido derecha ─── -->
-        <article class="flagship-project pa-reveal" aria-label="Caso estratégico: El Jardín — Mercado Urbano Tobalaba">
+        <article class="flagship-project pa-reveal" data-industry="uso-mixto" data-state="published" aria-label="Caso estratégico: El Jardín — Mercado Urbano Tobalaba">
 
           <div class="fp-image">
             <img
@@ -227,7 +227,7 @@
         </article>
 
         <!-- ─── INSIGNIA 2: PARQUE ARAUCO — contenido izquierda, imagen derecha ─── -->
-        <article class="flagship-project reverse pa-reveal" data-delay="120" aria-label="Caso estratégico: Parque Arauco Kennedy" style="margin-top:1px;">
+        <article class="flagship-project reverse pa-reveal" data-industry="retail" data-state="published" data-delay="120" aria-label="Caso estratégico: Parque Arauco Kennedy" style="margin-top:1px;">
 
           <!-- Imagen -->
           <div class="fp-image">
@@ -297,7 +297,7 @@
         </article>
 
         <!-- ─── INSIGNIA 3: CASA COSTANERA — imagen izquierda, contenido derecha ─── -->
-        <article class="flagship-project pa-reveal" data-delay="140" aria-label="Caso estratégico: Casa Costanera" style="margin-top:1px;">
+        <article class="flagship-project pa-reveal" data-industry="retail" data-state="published" data-delay="140" aria-label="Caso estratégico: Casa Costanera" style="margin-top:1px;">
 
           <div class="fp-image">
             <img
@@ -377,13 +377,17 @@
       <div class="pa-container">
 
         <div class="section-label">
-          <span class="section-label-text" id="portfolio-label">Portafolio operativo</span>
+          <span class="section-label-text" id="portfolio-label">Explora proyectos por industria</span>
         </div>
+
+        <p class="portfolio-context pa-reveal" data-delay="80">
+          Selecciona una industria para revisar casos publicados y referencias disponibles bajo autorización comercial.
+        </p>
 
         <div class="operative-grid" id="operative-grid">
 
           <!-- CARD 1: Clínica Santa María -->
-          <div class="op-card pa-reveal-scale" data-industry="salud" data-delay="0">
+          <div class="op-card pa-reveal-scale" data-industry="salud" data-state="restricted" data-delay="0">
             <span class="op-card-industry">Salud</span>
             <h3 class="op-card-name">Clínica Santa María</h3>
             <p class="op-card-desc">
@@ -396,18 +400,13 @@
               <span class="chip">Mantención</span>
             </div>
             <div class="op-card-footer">
-              <span class="op-card-year">[AUTH — cliente pendiente de autorización]</span>
-              <a href="javascript:void(0)" class="cta-arrow" style="margin-top:0;padding-top:0;font-size:11px;cursor:default;opacity:0.6;" aria-label="Caso Clínica Santa María — Próximamente">
-                Próximamente
-                <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" aria-hidden="true">
-                  <line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/>
-                </svg>
-              </a>
+              <span class="op-card-year">Referencia bajo autorización</span>
+              <span class="status-badge status-badge--restricted">No publicado</span>
             </div>
           </div>
 
           <!-- CARD 2: Casa Costanera -->
-          <div class="op-card pa-reveal-scale" data-industry="retail" data-delay="80">
+          <div class="op-card pa-reveal-scale" data-industry="retail" data-state="published" data-delay="80">
             <span class="op-card-industry">Retail</span>
             <h3 class="op-card-name">Casa Costanera</h3>
             <p class="op-card-desc">
@@ -431,7 +430,7 @@
           </div>
 
           <!-- CARD 3: Mallplaza Egaña -->
-          <div class="op-card pa-reveal-scale" data-industry="retail" data-delay="160">
+          <div class="op-card pa-reveal-scale" data-industry="retail" data-state="published" data-delay="160">
             <span class="op-card-industry">Retail</span>
             <h3 class="op-card-name">Mallplaza Egaña</h3>
             <p class="op-card-desc">
@@ -455,7 +454,7 @@
           </div>
 
           <!-- CARD 4: Corporativo distribuido [CLIENT PENDING] -->
-          <div class="op-card pa-reveal-scale" data-industry="corporativo" data-delay="240">
+          <div class="op-card pa-reveal-scale" data-industry="corporativo" data-state="restricted" data-delay="240">
             <span class="op-card-industry">Corporativo</span>
             <h3 class="op-card-name">Implementaciones Corporativas Distribuidas</h3>
             <p class="op-card-desc">
@@ -468,10 +467,15 @@
               <span class="chip">Mantención por activo</span>
             </div>
             <div class="op-card-footer">
-              <span class="op-card-year">[CLIENT_PENDING — Santander / IDEMIA / Grunenthal / otros por confirmar]</span>
+              <span class="op-card-year">Clientes bajo validación comercial</span>
             </div>
           </div>
 
+        </div>
+        <div class="filter-empty-state" data-filter-empty hidden aria-live="polite">
+          <h3 data-filter-empty-title>No hay casos publicados en esta categoría todavía.</h3>
+          <p data-filter-empty-copy>Podemos compartir referencias similares en una conversación ejecutiva según el tipo de activo y alcance del proyecto.</p>
+          <a href="index.html#contact" class="pa-btn-secondary">Solicitar referencia</a>
         </div>
       </div>
     </section>
@@ -598,11 +602,11 @@
           <h4 class="footer-col-title">Servicios</h4>
           <div class="footer-links">
             <a href="muros-verdes.html">Jardines Verticales</a>
-            <a href="index.html#expertise">Interiorismo Vegetal</a>
-            <a href="index.html#expertise">Paisajismo Comercial</a>
-            <a href="index.html#expertise">Riego Automatizado</a>
-            <a href="index.html#expertise">Techos Vegetales</a>
-            <a href="index.html#expertise">Mantención continua</a>
+            <a href="index.html#interiorismo-vegetal">Interiorismo Vegetal</a>
+            <a href="index.html#paisajismo-comercial">Paisajismo Comercial</a>
+            <a href="index.html#riego-automatizado">Riego Automatizado</a>
+            <a href="index.html#techos-vegetales">Techos Vegetales</a>
+            <a href="index.html#arriendo-muros-verdes">Arriendo de Muros Verdes</a>
           </div>
         </div>
 

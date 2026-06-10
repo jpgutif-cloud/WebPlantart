@@ -841,6 +841,20 @@ h3, .h3 {
 }
 
 /* ── MOLECULE: SERVICE SELECTOR (Apple-inspired detail pattern) ── */
+.service-anchor-list {
+  position: relative;
+  height: 0;
+}
+
+.service-anchor {
+  position: relative;
+  top: 0;
+  display: block;
+  height: 0;
+  overflow: hidden;
+  scroll-margin-top: 88px;
+}
+
 .expertise-grid.asymmetric {
   display: grid;
   gap: var(--space-6);
@@ -1716,6 +1730,25 @@ h3, .h3 {
 
 .form-group { display: flex; flex-direction: column; }
 
+.field-error {
+  min-height: 18px;
+  margin-top: 6px;
+  color: var(--pa-gold);
+  font-family: var(--font-body);
+  font-size: 12px;
+  line-height: 1.45;
+}
+
+.form-group.has-error .pa-label {
+  color: var(--pa-gold);
+}
+
+.pa-input[aria-invalid="true"],
+.pa-textarea[aria-invalid="true"] {
+  border-color: rgba(181,150,91,0.7);
+  box-shadow: 0 0 0 3px rgba(181,150,91,0.08);
+}
+
 .w-full { width: 100%; }
 
 .form-success-message {
@@ -1964,6 +1997,35 @@ h3, .h3 {
 
 /* ── BODY SCROLL LOCK ── */
 body.drawer-open { overflow: hidden; }
+
+.nav-link:focus-visible,
+.mobile-menu-btn:focus-visible,
+.close-drawer-btn:focus-visible,
+.footer-social a:focus-visible,
+.footer-links a:focus-visible,
+.pa-project-card:focus-visible,
+.pa-service-card.compact:focus-visible,
+.expacc-trigger:focus-visible,
+.wa-float:focus-visible {
+  outline: 2px solid var(--pa-gold);
+  outline-offset: 3px;
+  border-radius: var(--radius-sm);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html:focus-within {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.001ms !important;
+  }
+}
 
 /* ── WHATSAPP FLOATING BUTTON ── */
 .wa-float {

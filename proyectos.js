@@ -2,7 +2,7 @@
  * Plant Art — proyectos.js
  * Scope: proyectos.html, proyectos-mut.html, proyectos-arauco.html
  * Responsibilities:
- *   1. Industry filter (pills → op-cards)
+ *   1. Industry filter (pills → project cards)
  *   2. Scroll reveal (IntersectionObserver)
  *   3. Flagship image hover (pure CSS, no JS needed)
  *   4. Back-to-top button
@@ -13,34 +13,70 @@
 
 /* ─────────────────────────────────────────────
    1. INDUSTRY FILTER
-   Pills control visibility of .op-card elements
-   Flagship projects (.flagship-project) are NEVER filtered.
+   Pills control visibility of project cards and flagship cases.
 ───────────────────────────────────────────── */
 function initFilter() {
   const pills = document.querySelectorAll('.filter-pill');
-  const cards = document.querySelectorAll('.op-card');
+  const cards = document.querySelectorAll('.op-card, .flagship-project');
+  const operationalCards = document.querySelectorAll('.op-card');
+  const emptyState = document.querySelector('[data-filter-empty]');
+  const emptyTitle = emptyState ? emptyState.querySelector('[data-filter-empty-title]') : null;
+  const emptyCopy = emptyState ? emptyState.querySelector('[data-filter-empty-copy]') : null;
   if (!pills.length) return;
 
   pills.forEach(pill => {
     pill.addEventListener('click', () => {
-      // Update active state
-      pills.forEach(p => p.classList.remove('is-active'));
+      pills.forEach(p => {
+        p.classList.remove('is-active');
+        p.setAttribute('aria-pressed', 'false');
+      });
       pill.classList.add('is-active');
+      pill.setAttribute('aria-pressed', 'true');
 
       const filter = pill.dataset.filter;
+      let visiblePublished = 0;
 
       cards.forEach(card => {
-        if (filter === 'all') {
+        const cardIndustry = card.dataset.industry || '';
+        const shouldShow = filter === 'all' || cardIndustry === filter;
+
+        if (shouldShow) {
           card.classList.remove('is-hidden');
+          if ((card.dataset.state || 'published') === 'published') visiblePublished++;
         } else {
-          const cardIndustry = card.dataset.industry || '';
-          if (cardIndustry === filter) {
-            card.classList.remove('is-hidden');
-          } else {
-            card.classList.add('is-hidden');
-          }
+          card.classList.add('is-hidden');
         }
       });
+
+      if (emptyState) {
+        let operationalPublished = 0;
+        let operationalRestricted = 0;
+
+        operationalCards.forEach(card => {
+          if (card.classList.contains('is-hidden')) return;
+          if ((card.dataset.state || 'published') === 'published') {
+            operationalPublished++;
+          } else {
+            operationalRestricted++;
+          }
+        });
+
+        const shouldShowEmpty = filter !== 'all' && operationalPublished === 0;
+        emptyState.hidden = !shouldShowEmpty;
+
+        if (shouldShowEmpty && emptyTitle && emptyCopy) {
+          if (operationalRestricted > 0) {
+            emptyTitle.textContent = 'No hay casos publicados en esta categoría.';
+            emptyCopy.textContent = 'Existen referencias bajo autorización comercial. Podemos revisarlas en una conversación ejecutiva según el tipo de activo y alcance.';
+          } else if (visiblePublished > 0) {
+            emptyTitle.textContent = 'No hay proyectos operativos publicados en esta categoría.';
+            emptyCopy.textContent = 'Arriba queda disponible el caso estratégico relacionado. Podemos compartir referencias operativas bajo solicitud.';
+          } else {
+            emptyTitle.textContent = 'No hay casos publicados en esta categoría todavía.';
+            emptyCopy.textContent = 'Podemos compartir referencias similares en una conversación ejecutiva según el tipo de activo y alcance del proyecto.';
+          }
+        }
+      }
     });
   });
 }
@@ -222,26 +258,55 @@ function initMobileMenu() {
   const closeBtn = document.querySelector('.close-drawer-btn');
   if (!btn || !drawer) return;
 
+  const focusableSelector = 'a[href], button:not([disabled]), textarea, input, select, [tabindex]:not([tabindex="-1"])';
+  drawer.setAttribute('aria-hidden', 'true');
+  drawer.setAttribute('inert', '');
+
   const openDrawer = () => {
     drawer.classList.add('is-open');
-    overlay.classList.add('is-visible');
+    if (overlay) overlay.classList.add('is-visible', 'is-active');
+    drawer.setAttribute('aria-hidden', 'false');
+    drawer.removeAttribute('inert');
     document.body.style.overflow = 'hidden';
     btn.setAttribute('aria-expanded', 'true');
+    const firstFocusable = closeBtn || drawer.querySelector(focusableSelector);
+    if (firstFocusable) firstFocusable.focus();
   };
 
   const closeDrawer = () => {
     drawer.classList.remove('is-open');
-    overlay.classList.remove('is-visible');
+    if (overlay) overlay.classList.remove('is-visible', 'is-active');
+    drawer.setAttribute('aria-hidden', 'true');
+    drawer.setAttribute('inert', '');
     document.body.style.overflow = '';
     btn.setAttribute('aria-expanded', 'false');
+    btn.focus();
   };
 
   btn.addEventListener('click', openDrawer);
-  closeBtn?.addEventListener('click', closeDrawer);
-  overlay?.addEventListener('click', closeDrawer);
+  if (closeBtn) closeBtn.addEventListener('click', closeDrawer);
+  if (overlay) overlay.addEventListener('click', closeDrawer);
 
   document.addEventListener('keydown', e => {
+    if (!drawer.classList.contains('is-open')) return;
     if (e.key === 'Escape') closeDrawer();
+    if (e.key !== 'Tab') return;
+
+    const focusable = Array.from(drawer.querySelectorAll(focusableSelector));
+    if (!focusable.length) return;
+    const first = focusable[0];
+    const last = focusable[focusable.length - 1];
+    if (e.shiftKey && document.activeElement === first) {
+      e.preventDefault();
+      last.focus();
+    } else if (!e.shiftKey && document.activeElement === last) {
+      e.preventDefault();
+      first.focus();
+    }
+  });
+
+  drawer.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', closeDrawer);
   });
 }
 

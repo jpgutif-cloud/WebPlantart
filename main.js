@@ -184,7 +184,7 @@
         kicker: '01. Jardines Verticales',
         title: 'Sistemas vivos integrados a la arquitectura.',
         description: 'Diseñamos e instalamos muros verdes con tecnología hidropónica avanzada, integrando estructura, riego, selección botánica y mantención para proyectos de alto estándar.',
-        image: 'assets/images/starbucksmuro.jpeg',
+        image: 'assets/images/starbucksmuro.webp',
         alt: 'Jardín vertical exterior con vegetación integrada y operación Plant Art',
         points: [
           'Sistema Telmadermi y soluciones hidropónicas.',
